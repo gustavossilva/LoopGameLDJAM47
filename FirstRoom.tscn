@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://FirstRoom.gd" type="Script" id=1]
-[ext_resource path="res://World/BackgroundSmall.png" type="Texture" id=2]
+[ext_resource path="res://World/BackgroundMedium.png" type="Texture" id=2]
 [ext_resource path="res://Props/Book.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/DialogTest.tscn" type="PackedScene" id=5]
 
-[node name="FirstRoom" type="Node"]
+[node name="FirstRoom" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
@@ -24,4 +24,3 @@ position = Vector2( 160, 64 )
 
 [node name="DialogTest" parent="UI" instance=ExtResource( 5 )]
 visible = false
-theme = null

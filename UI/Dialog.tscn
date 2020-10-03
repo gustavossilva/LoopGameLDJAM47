@@ -33,17 +33,36 @@ __meta__ = {
 [node name="DialogPanel" type="Panel" parent="."]
 margin_top = 140.0
 margin_right = 320.0
-margin_bottom = 180.0
+margin_bottom = 182.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DialogText" type="Label" parent="DialogPanel"]
-margin_left = 2.0
+margin_left = 1.0
 margin_top = 3.0
-margin_right = 319.0
-margin_bottom = 53.0
+margin_right = 318.0
+margin_bottom = 39.0
 text = "Dialog Text"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speaker" type="Panel" parent="."]
+margin_top = 130.0
+margin_right = 50.0
+margin_bottom = 141.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeakerName" type="Label" parent="Speaker"]
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 51.0
+margin_bottom = 13.0
+text = "Victemporis"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
