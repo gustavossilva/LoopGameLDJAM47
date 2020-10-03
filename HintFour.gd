@@ -1,4 +1,4 @@
-extends "res://UI/Dialog.gd"
+extends "res://Dialogs/Dialog.gd"
 
 func _ready():
 	visible = false
@@ -12,7 +12,8 @@ func _process(_delta):
 		animationPlayer.play("Idle")
 		set_process(false)
 
-func _on_DialogTest_hide():
+
+func _on_HintThree_hide():
 	self.visible = true
 	set_process(true)
-	animationPlayer.play("Writer")
+	animationPlayer.play("Write")

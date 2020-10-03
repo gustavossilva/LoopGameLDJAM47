@@ -84,7 +84,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 14, 6 )
+extents = Vector2( 25, 11 )
 
 [node name="Book" instance=ExtResource( 1 )]
 collision_layer = 2

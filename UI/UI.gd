@@ -1,7 +1,6 @@
 extends CanvasLayer
 
-onready var dialogTest = $DialogTest
+onready var bookDialog = $HintOne
 
 func _on_Book_open_book():
-	dialogTest.play_dialog()
-	
+	bookDialog.play_dialog()
