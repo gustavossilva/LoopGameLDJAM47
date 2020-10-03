@@ -1,9 +1,11 @@
 extends Control
 
+export(float) var SPEED_UP = 2.5
+
+onready var animationPlayer = $AnimationPlayer
+
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		var main = get_tree().current_scene
-		var instance = DialogLoader.DialogTest2.instance()
-		main.add_child(instance)
-		instance.rect_global_position = Vector2.ZERO
-		queue_free()
+	if Input.is_action_pressed("dialog_speedup"):
+		animationPlayer.playback_speed = SPEED_UP
+	else:
+		animationPlayer.playback_speed = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://FirstRoom.gd" type="Script" id=1]
-[ext_resource path="res://World/GrassBackground.png" type="Texture" id=2]
+[ext_resource path="res://World/Background.png" type="Texture" id=2]
 [ext_resource path="res://Props/Book.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/DialogTest.tscn" type="PackedScene" id=5]
@@ -13,13 +13,14 @@ script = ExtResource( 1 )
 position = Vector2( 160, 96 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 176, 192 )
+region_rect = Rect2( 0, 0, 128, 208 )
 
 [node name="Book" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 80 )
+position = Vector2( 160, 64 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 
 [node name="DialogTest" parent="UI" instance=ExtResource( 5 )]
+visible = false
