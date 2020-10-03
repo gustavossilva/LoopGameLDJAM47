@@ -17,10 +17,16 @@ onready var animationState = animationTree.get("parameters/playback")
 
 var state = MOVE
 
+var timePressingAttack = 0
+export(float) var timeToChargeAttack = 1.5
+
 func _ready():
 	animationTree.active = true
 
 func _physics_process(delta):
+	if GameManager.isInteracting:
+		animationState.travel("Idle")
+		return
 	match state:
 		MOVE:
 			move(delta)
@@ -43,8 +49,16 @@ func move(delta):
 		velocity = input_vector.move_toward(Vector2.ZERO, FRICTION * delta)
 	velocity = move_and_slide(velocity)
 	
-	if Input.is_action_just_pressed("attack"):
-		state = ATTACK
+	if Input.is_action_pressed("attack"):
+		timePressingAttack += delta
+		
+	if Input.is_action_just_released("attack"):
+		if(timePressingAttack >= timeToChargeAttack):
+			print("charge attack")
+			state = ATTACK
+		else:
+			state = ATTACK
+		timePressingAttack = 0
 		
 func attack(delta):
 	velocity = Vector2.ZERO
@@ -52,3 +66,4 @@ func attack(delta):
 	
 func on_finished_attack():
 	state = MOVE
+
