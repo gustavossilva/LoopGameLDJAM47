@@ -192,3 +192,11 @@ active = true
 parameters/playback = SubResource( 20 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+process_mode = 0
+limit_top = -50
+limit_bottom = 293
+limit_smoothed = true
+smoothing_enabled = true
