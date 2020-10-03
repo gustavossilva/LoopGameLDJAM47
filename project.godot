@@ -19,6 +19,10 @@ config/name="LoopGameLDJAM47"
 run/main_scene="res://Menus/StartMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+DialogLoader="*res://DialogLoader.gd"
+
 [display]
 
 window/size/width=320

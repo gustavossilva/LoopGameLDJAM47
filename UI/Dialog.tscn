@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Dialog.gd" type="Script" id=1]
+
+[node name="Dialog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightFigure" type="TextureRect" parent="."]
+margin_left = 196.0
+margin_top = 32.0
+margin_right = 324.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftFigure" type="TextureRect" parent="."]
+margin_left = -3.0
+margin_top = 32.0
+margin_right = 125.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogPanel" type="Panel" parent="."]
+margin_top = 126.0
+margin_right = 320.0
+margin_bottom = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogText" type="Label" parent="DialogPanel"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 319.0
+margin_bottom = 53.0
+text = "Dialog Text"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://FirstRoom.gd" type="Script" id=1]
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=2]
 [ext_resource path="res://Props/Book.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/DialogTest.tscn" type="PackedScene" id=5]
 
 [node name="FirstRoom" type="Node"]
 script = ExtResource( 1 )
@@ -17,3 +19,7 @@ region_rect = Rect2( 0, 0, 176, 192 )
 position = Vector2( 160, 80 )
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="DialogTest" parent="UI" instance=ExtResource( 5 )]
