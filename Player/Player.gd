@@ -14,6 +14,7 @@ const FRICTION = 1000
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
+onready var footParticle = $FootParticle2D
 
 var state = MOVE
 
@@ -44,12 +45,15 @@ func move(delta):
 		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		footParticle.emitting = true
 	else:
 		animationState.travel("Idle")
+		footParticle.emitting = false
 		velocity = input_vector.move_toward(Vector2.ZERO, FRICTION * delta)
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_pressed("attack"):
+		footParticle.emitting = false
 		timePressingAttack += delta
 		
 	if Input.is_action_just_released("attack"):
