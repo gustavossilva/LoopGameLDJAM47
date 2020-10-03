@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://FirstRoom.gd" type="Script" id=1]
 [ext_resource path="res://World/BackgroundMedium.png" type="Texture" id=2]
 [ext_resource path="res://Props/Book.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/DialogTest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 
 [node name="FirstRoom" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,3 +25,6 @@ position = Vector2( 160, 64 )
 
 [node name="DialogTest" parent="UI" instance=ExtResource( 5 )]
 visible = false
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 52.6585, 49.272 )
