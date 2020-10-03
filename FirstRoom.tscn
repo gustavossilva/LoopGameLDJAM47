@@ -17,7 +17,7 @@ polygon = PoolVector2Array( -6, 3, -6, -1, 5, -1, 7, 3 )
 script = ExtResource( 1 )
 
 [node name="GlobalIlumination" type="CanvasModulate" parent="."]
-color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+color = Color( 0.215686, 0.215686, 0.215686, 1 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 249, 144 )
@@ -30,7 +30,7 @@ position = Vector2( 265, 133 )
 tile_data = PoolIntArray( -262148, 0, 0, -327678, 536870912, 0, -196612, 0, 0, -262142, 536870912, 0, -131076, 0, 0, -196606, 536870912, 0, -65540, 0, 0, -131070, 536870912, 0, -4, 0, 0, -65534, 536870912, 0, 65532, 0, 0, 2, 536870912, 0, 131068, 0, 0, 65538, 536870912, 0, 196604, 0, 0, 131074, 536870912, 0, 262140, 0, 0, 196610, 536870912, 0, 327676, 0, 0, 262146, 536870912, 0 )
 
 [node name="Book" parent="." instance=ExtResource( 3 )]
-position = Vector2( 312, 18 )
+position = Vector2( 255, 65 )
 
 [node name="YSort" type="YSort" parent="."]
 
