@@ -24,7 +24,7 @@ script = ExtResource( 2 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
 text = "Blelbelbelblblbu blbulbubaubuabhio oifjasdoijfasdjio jfdoaisjpofijasdoifjpasdiopjf iodfajsfpoisajdiofjp oajsdoifasjdoijoif certo?"
+percent_visible = 0.0
 
 [node name="AnimationPlayer" parent="." index="4"]
-autoplay = "Writer"
 anims/Writer = SubResource( 1 )
