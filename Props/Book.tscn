@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ Color( 0.984314, 0.12549, 0.0392157, 0 ), Color( 0.984314, 0.12549, 0.0392157, 1 ), Color( 0.984314, 0.12549, 0.0392157, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle"
 length = 0.1
 tracks/0/type = "value"
@@ -50,23 +50,8 @@ tracks/0/keys = {
 "values": [ Color( 0.984314, 0.12549, 0.0392157, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11, 6 )
-
-[sub_resource type="Animation" id=3]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=4]
 loop = true
@@ -83,7 +68,22 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 14, 6 )
 
 [node name="Book" instance=ExtResource( 1 )]
@@ -111,7 +111,7 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Book2" index="0"]
 anims/Animate = SubResource( 1 )
-anims/Idle = SubResource( 6 )
+anims/Idle = SubResource( 2 )
 
 [node name="Book" type="Sprite" parent="Sprite" index="1"]
 position = Vector2( -0.25, -17.75 )
@@ -120,7 +120,7 @@ texture = ExtResource( 3 )
 
 [node name="Collision" parent="." index="2"]
 position = Vector2( 0, 5 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="." index="3"]
 position = Vector2( -4, 0 )
@@ -132,7 +132,7 @@ range_item_cull_mask = -2147483646
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D" index="0"]
 autoplay = "Animate"
-anims/Animate = SubResource( 3 )
+anims/Animate = SubResource( 4 )
 
 [node name="Light2D2" type="Light2D" parent="." index="4"]
 position = Vector2( 4, 0 )
@@ -144,13 +144,13 @@ range_item_cull_mask = -2147483646
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D2" index="0"]
 autoplay = "Animate"
-anims/Animate = SubResource( 4 )
+anims/Animate = SubResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="." index="5"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( 0, 11 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

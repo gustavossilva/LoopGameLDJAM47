@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Dialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/DialogTest2.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Writer"
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("DialogPanel/DialogText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DialogPanel/DialogText:percent_visible")
@@ -27,4 +42,5 @@ text = "Blelbelbelblblbu blbulbubaubuabhio oifjasdoijfasdjio jfdoaisjpofijasdoif
 percent_visible = 0.0
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/Writer = SubResource( 1 )
+anims/Idle = SubResource( 1 )
+anims/Writer = SubResource( 2 )

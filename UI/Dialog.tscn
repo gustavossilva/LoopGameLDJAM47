@@ -44,8 +44,8 @@ __meta__ = {
 [node name="DialogText" type="Label" parent="DialogPanel"]
 margin_left = 1.0
 margin_top = 2.0
-margin_right = 318.0
-margin_bottom = 38.0
+margin_right = 478.0
+margin_bottom = 41.0
 text = "Dialog Text"
 autowrap = true
 __meta__ = {
