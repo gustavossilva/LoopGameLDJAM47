@@ -25,8 +25,14 @@ func _ready():
 	animationTree.active = true
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_home"):
+		GameManager.isDead = true
+		return
 	if GameManager.isInteracting:
 		animationState.travel("Idle")
+		return
+	if GameManager.isDead:
+		animationState.travel("Die")
 		return
 	match state:
 		MOVE:
@@ -71,3 +77,5 @@ func attack(delta):
 func on_finished_attack():
 	state = MOVE
 
+func reset_game():
+	GameManager.resetToGameLoop()

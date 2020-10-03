@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -127,6 +127,35 @@ tracks/1/keys = {
 "values": [ {
 "args": [  ],
 "method": "on_finished_attack"
+} ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 55, 56, 57, 58 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_game"
 } ]
 }
 
@@ -283,6 +312,9 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Die"
+
 [sub_resource type="AnimationNodeAnimation" id=20]
 animation = "idleLeft"
 
@@ -339,16 +371,22 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
 [sub_resource type="AnimationNodeStateMachine" id=34]
 states/Attack/node = SubResource( 19 )
-states/Attack/position = Vector2( 502, 196 )
+states/Attack/position = Vector2( 367, 174 )
+states/Die/node = SubResource( 38 )
+states/Die/position = Vector2( 502, 222 )
 states/Idle/node = SubResource( 24 )
 states/Idle/position = Vector2( 502, 93 )
 states/Run/node = SubResource( 29 )
-states/Run/position = Vector2( 696, 93 )
-transitions = [ "Idle", "Run", SubResource( 30 ), "Run", "Idle", SubResource( 31 ), "Idle", "Attack", SubResource( 32 ), "Attack", "Idle", SubResource( 33 ) ]
+states/Run/position = Vector2( 724, 93 )
+transitions = [ "Idle", "Run", SubResource( 30 ), "Run", "Idle", SubResource( 31 ), "Idle", "Attack", SubResource( 32 ), "Attack", "Idle", SubResource( 33 ), "Idle", "Die", SubResource( 39 ), "Die", "Idle", SubResource( 40 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -55, 74 )
+graph_offset = Vector2( -104, 41 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
@@ -389,6 +427,7 @@ anims/AttackDown = SubResource( 3 )
 anims/AttackLeft = SubResource( 4 )
 anims/AttackRight = SubResource( 5 )
 anims/AttackUp = SubResource( 6 )
+anims/Die = SubResource( 37 )
 anims/IdleDown = SubResource( 7 )
 anims/IdleRight = SubResource( 8 )
 anims/IdleUp = SubResource( 9 )
@@ -401,6 +440,7 @@ anims/idleLeft = SubResource( 14 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 34 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 35 )
 parameters/Attack/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
