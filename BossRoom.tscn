@@ -746,6 +746,20 @@ tracks/23/keys = {
 "method": "shake_on_spawn"
 } ]
 }
+tracks/24/type = "method"
+tracks/24/path = NodePath("../..")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_sword_attack"
+} ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 3.2
@@ -2345,7 +2359,7 @@ position = Vector2( 62, -44 )
 texture = ExtResource( 12 )
 
 [node name="Area2D" type="Area2D" parent="YSort/EarthAttack"]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 0
 
 [node name="BigShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D"]
@@ -2355,7 +2369,7 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="YSort/EarthAttack"]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 0
 
 [node name="MediumShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D2"]
@@ -2365,7 +2379,7 @@ shape = SubResource( 6 )
 disabled = true
 
 [node name="Area2D3" type="Area2D" parent="YSort/EarthAttack"]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 0
 
 [node name="SmallShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D3"]
@@ -2396,10 +2410,18 @@ position = Vector2( 240, -255 )
 visible = false
 position = Vector2( 190.423, -192.357 )
 
+[node name="Area2D" parent="BossSword" index="1"]
+collision_layer = 32
+collision_mask = 0
+
 [node name="BossSword2" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 329.015, -194.877 )
 rotation = -1.0472
+
+[node name="Area2D" parent="BossSword2" index="1"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="AnimationPlayer" parent="BossSword2" index="2"]
 anims/Rotate = SubResource( 10 )
@@ -2469,15 +2491,19 @@ position = Vector2( 241, -258 )
 scale = Vector2( 5, 5 )
 
 [node name="UIBoss" parent="." instance=ExtResource( 9 )]
+
+[node name="SwordAttackTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="YSort/Cryistals/BossCrystal" method="queue_free"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="YSort/Cryistals/BossCrystal" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="YSort/Cryistals/BossCrystal2" method="queue_free"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="YSort/Cryistals/BossCrystal3" method="queue_free"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="YSort/Cryistals/BossCrystal2" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="YSort/Cryistals/BossCrystal3" method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="YSort/Cryistals/BossCrystal4" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="YSort/Cryistals/BossCrystal4" method="queue_free"]
 [connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]
 [connection signal="area_entered" from="RightDestructableArea" to="." method="_on_RightDestructableArea_area_entered"]
 [connection signal="hide" from="UIBoss/Boss1" to="." method="_on_Boss1_hide"]

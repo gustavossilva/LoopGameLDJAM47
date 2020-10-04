@@ -9,16 +9,31 @@ onready var rightDestructableArea = $RightDestructableArea
 onready var rightDoorDestructable = $RightDoorDestructable
 onready var bossSword1 = $BossSword
 onready var bossSword2 = $BossSword2
+onready var swordAttackTimer = $SwordAttackTimer
+onready var uiboss = $UIBoss
 
 var earthAttack = false
+var swordAttack = false
 var crystals = 4
 
 func set_earth_attack():
 	earthAttack = true
 
+func set_sword_attack():
+	earthAttack = false
+	swordAttack = true
+	bossSword1.visible = true
+	bossSword2.visible = true
+	swordAttackTimer.start()
+
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 
+func _process(delta):
+	if swordAttackTimer.time_left == 0 && crystals != 0 && swordAttack:
+		swordAttack = false
+		bossSword1.attack()
+		bossSword2.attack()
 
 func _on_Area2D_body_entered(_body):
 	get_tree().change_scene("res://FinalRoom.tscn")
@@ -41,7 +56,10 @@ func _on_RightDestructableArea_area_entered(area):
 		rightDestructableArea.queue_free()
 
 func _on_Area2DCrystal_area_entered(area):
-	crystals -= 1
-	if crystals == 0:
-		bossSword1.queue_free()
-		bossSword2.queue_free()
+	print("eupa")
+	if swordAttackTimer.time_left != 0:
+		crystals -= 1
+		if crystals == 0:
+			bossSword1.queue_free()
+			bossSword2.queue_free()
+			uiboss.crystal_break()
