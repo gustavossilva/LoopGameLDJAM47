@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://CollisionBoxes/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/SFX/spin.wav" type="AudioStream" id=7]
 [ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Camera2D.gd" type="Script" id=9]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -4.00739, -0.87471, 0.235229, -6.00123, 6.776, -2.28891, 1.47269, -1.58182 )
@@ -716,6 +717,9 @@ limit_top = -50
 limit_bottom = 293
 limit_smoothed = true
 smoothing_enabled = true
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="Camera2D"]
 
 [node name="FootParticle2D" type="Particles2D" parent="."]
 show_behind_parent = true
@@ -757,6 +761,7 @@ collision_mask = 4
 [node name="HurtboxCollision" parent="Hurtbox" index="0"]
 shape = SubResource( 46 )
 disabled = true
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="AxeHitboxPosition/Hitbox"]

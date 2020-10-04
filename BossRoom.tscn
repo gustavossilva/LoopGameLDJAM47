@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BossRoom.gd" type="Script" id=2]
@@ -14,16 +14,17 @@
 [ext_resource path="res://Enemy/earth.png" type="Texture" id=12]
 [ext_resource path="res://Enemy/FireCollisionShape2.tres" type="Shape2D" id=13]
 [ext_resource path="res://Enemy/FireCollisionShape.tres" type="Shape2D" id=14]
+[ext_resource path="res://EarthAttack.gd" type="Script" id=15]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 209, 17 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 96, 16 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 7.55
 step = 0.05
 tracks/0/type = "value"
@@ -391,16 +392,16 @@ tracks/29/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 22.6186, 336.752 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 56.8106, 155.271 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 48, 128 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 resource_name = "Attack"
 length = 10.0
 tracks/0/type = "value"
@@ -679,8 +680,46 @@ tracks/22/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/23/type = "method"
+tracks/23/path = NodePath(".")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+} ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=9]
 length = 3.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ShieldStatue:modulate")
@@ -761,7 +800,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -776,19 +815,19 @@ tracks/0/keys = {
 "values": [ -60.0, 90.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 83, 17 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 5, 303 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 6, 223 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 6, 69 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 6, 16 )
 
 [node name="BossRoom" type="Node2D"]
@@ -938,7 +977,7 @@ collision_mask = 0
 
 [node name="Wave2Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave2/Area2D"]
 position = Vector2( 128, -112 )
-shape = SubResource( 11 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="YSort/FireAttack/FirstWave2"]
@@ -947,7 +986,7 @@ collision_mask = 0
 
 [node name="Wave2Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave2/Area2D2"]
 position = Vector2( 352, -112 )
-shape = SubResource( 11 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="FirstWave3" type="Node2D" parent="YSort/FireAttack"]
@@ -1511,9 +1550,10 @@ shape = ExtResource( 14 )
 disabled = true
 
 [node name="FireAttackAnimation" type="AnimationPlayer" parent="YSort/FireAttack"]
-anims/FireWave = SubResource( 3 )
+anims/FireWave = SubResource( 4 )
 
 [node name="EarthAttack" type="Node2D" parent="YSort"]
+script = ExtResource( 15 )
 
 [node name="Earth1" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2221,7 +2261,7 @@ visible = false
 [node name="BigShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D"]
 position = Vector2( -16, -128 )
 rotation = 0.757473
-shape = SubResource( 13 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="YSort/EarthAttack"]
@@ -2230,7 +2270,7 @@ visible = false
 [node name="MediumShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D2"]
 position = Vector2( 336, 208 )
 rotation = 0.610865
-shape = SubResource( 14 )
+shape = SubResource( 6 )
 disabled = true
 
 [node name="Area2D3" type="Area2D" parent="YSort/EarthAttack"]
@@ -2238,11 +2278,12 @@ visible = false
 
 [node name="SmallShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D3"]
 position = Vector2( 400, 288 )
-shape = SubResource( 15 )
+shape = SubResource( 7 )
 disabled = true
 
 [node name="EarthAttackAnimation" type="AnimationPlayer" parent="YSort/EarthAttack"]
-anims/Attack = SubResource( 12 )
+autoplay = "Attack"
+anims/Attack = SubResource( 8 )
 
 [node name="ShieldStatue" parent="YSort" instance=ExtResource( 3 )]
 visible = false
@@ -2257,7 +2298,7 @@ visible = false
 position = Vector2( 343, 93 )
 
 [node name="StatueAnimations" type="AnimationPlayer" parent="YSort"]
-anims/MagiaDaDisney = SubResource( 4 )
+anims/MagiaDaDisney = SubResource( 9 )
 
 [node name="Sofa" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 240, -255 )
@@ -2273,7 +2314,7 @@ position = Vector2( 329.015, -194.877 )
 rotation = -1.0472
 
 [node name="AnimationPlayer" parent="BossSword2" index="2"]
-anims/Rotate = SubResource( 5 )
+anims/Rotate = SubResource( 10 )
 
 [node name="InitGameTimer" type="Timer" parent="."]
 wait_time = 6.0
@@ -2286,7 +2327,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossAreaBlock"]
 position = Vector2( 240, -146 )
-shape = SubResource( 6 )
+shape = SubResource( 11 )
 
 [node name="LeftAreaBlock" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -2296,7 +2337,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaBlock"]
 position = Vector2( 32, -10 )
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 
 [node name="RightArea" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -2305,7 +2346,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
 position = Vector2( 449, -94 )
-shape = SubResource( 8 )
+shape = SubResource( 13 )
 
 [node name="RightArea2" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -2314,7 +2355,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea2"]
 position = Vector2( 449, 229 )
-shape = SubResource( 9 )
+shape = SubResource( 14 )
 
 [node name="RightDoor" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -2323,7 +2364,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoor"]
 position = Vector2( 449, 144 )
-shape = SubResource( 10 )
+shape = SubResource( 15 )
 
 [node name="Torch" parent="." instance=ExtResource( 11 )]
 position = Vector2( 241, -258 )
