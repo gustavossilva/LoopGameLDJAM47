@@ -121,6 +121,7 @@ attack={
 2d_physics/layer_6="SwordEnemy"
 2d_physics/layer_7="EarthEnemy"
 2d_physics/layer_8="EyeEnemy"
+2d_physics/layer_9="Destructable"
 
 [rendering]
 

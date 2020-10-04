@@ -799,6 +799,20 @@ tracks/5/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("EarthAttack/EarthAttackAnimation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Attack", -1, 1.0, false ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 1.5
@@ -2307,6 +2321,7 @@ shape = SubResource( 7 )
 disabled = true
 
 [node name="EarthAttackAnimation" type="AnimationPlayer" parent="YSort/EarthAttack"]
+playback_speed = 0.5
 anims/Attack = SubResource( 8 )
 
 [node name="ShieldStatue" parent="YSort" instance=ExtResource( 3 )]
@@ -2378,14 +2393,20 @@ __meta__ = {
 position = Vector2( 449, 229 )
 shape = SubResource( 14 )
 
-[node name="RightDoor" type="StaticBody2D" parent="."]
+[node name="RightDestructableArea" type="Area2D" parent="."]
+position = Vector2( 449, 144 )
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDestructableArea"]
+shape = SubResource( 15 )
+
+[node name="RightDoorDestructable" type="StaticBody2D" parent="."]
+collision_layer = 256
+collision_mask = 512
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoor"]
-position = Vector2( 449, 144 )
-shape = SubResource( 15 )
 
 [node name="Torch" parent="." instance=ExtResource( 11 )]
 position = Vector2( 241, -258 )
@@ -2394,6 +2415,7 @@ scale = Vector2( 5, 5 )
 [node name="UIBoss" parent="." instance=ExtResource( 9 )]
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]
+[connection signal="body_entered" from="RightDestructableArea" to="." method="_on_RightDestructableArea_body_entered"]
 [connection signal="hide" from="UIBoss/Boss1" to="." method="_on_Boss1_hide"]
 
 [editable path="DoorOpen"]
