@@ -1,0 +1,52 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Dialogs/BossDeath.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Dialogs/BossEarthshake2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dialogs/BossSword2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Dialogs/BossCrystalBreak.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Dialogs/BossSword1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Dialogs/Boss1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Dialogs/BossEarthshake1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Dialogs/BossEye1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Dialogs/BossTired.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Dialogs/BossFireDeath2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Dialogs/BossFireDeath1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Dialogs/BossEye2.tscn" type="PackedScene" id=12]
+
+[node name="UIBoss" type="CanvasLayer"]
+
+[node name="Boss1" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="BossCrystalBreak" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="BossDeath" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="BossEarthshake1" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="BossEarthshake2" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="BossEye1" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="BossEye2" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="BossFireDeath1" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="BossFireDeath2" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="BossSword1" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="BossSword2" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="BossTired" parent="." instance=ExtResource( 9 )]
+visible = false
