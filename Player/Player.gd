@@ -17,6 +17,7 @@ onready var lightSprite = $Light
 onready var dieSound = $SfxDie
 onready var chargedSound = $SfxCharged
 onready var spinSound = $sfxSpin
+onready var missSound = $SfxMiss
 
 var dieSoundPlaying = false
 var chargedIsPlaying = false
@@ -79,6 +80,7 @@ func move(delta):
 			state = CHARGE_ATTACK
 		else:
 			state = ATTACK
+			missSound.play()
 		lightSprite.modulate.a = 0
 		timePressingAttack = 0
 		
@@ -86,6 +88,7 @@ func attack(_delta):
 	footParticle.emitting = false
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
+	
 	
 func charge_attack(delta):
 	chargedIsPlaying = false
