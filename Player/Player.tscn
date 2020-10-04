@@ -763,6 +763,7 @@ position = Vector2( 0, -6 )
 rotation = 1.5708
 
 [node name="Hitbox" parent="AxeHitboxPosition" instance=ExtResource( 6 )]
+collision_layer = 512
 collision_mask = 8
 
 [node name="HitBoxCollision" parent="AxeHitboxPosition/Hitbox" index="0"]
