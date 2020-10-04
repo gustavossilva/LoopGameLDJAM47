@@ -29,7 +29,7 @@ func _on_InitGameTimer_timeout():
 	fireAttackAnimation.play("FireWave")
 
 
-func _on_RightDestructableArea_body_entered(body):
+func _on_RightDestructableArea_area_entered(area):
 	if earthAttack:
 		hiddenRoom1.visible = true
 		hiddenRoom2.visible = true

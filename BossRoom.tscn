@@ -2410,7 +2410,7 @@ shape = SubResource( 14 )
 [node name="RightDestructableArea" type="Area2D" parent="."]
 position = Vector2( 449, 144 )
 collision_layer = 256
-collision_mask = 512
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDestructableArea"]
 shape = SubResource( 15 )
@@ -2433,7 +2433,7 @@ scale = Vector2( 5, 5 )
 [node name="UIBoss" parent="." instance=ExtResource( 9 )]
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]
-[connection signal="body_entered" from="RightDestructableArea" to="." method="_on_RightDestructableArea_body_entered"]
+[connection signal="area_entered" from="RightDestructableArea" to="." method="_on_RightDestructableArea_area_entered"]
 [connection signal="hide" from="UIBoss/Boss1" to="." method="_on_Boss1_hide"]
 
 [editable path="DoorOpen"]
