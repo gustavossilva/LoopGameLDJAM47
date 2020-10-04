@@ -39,3 +39,5 @@ func resetToGameLoop():
 	loopTimes += 1
 	isDead = false
 	#insert reset code
+	get_tree().change_scene("res://FirstRoom.tscn")
+	
