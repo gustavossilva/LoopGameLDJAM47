@@ -224,4 +224,5 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 tile_set = SubResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 0, 0, 0, 1, 0, 0 )
+collision_layer = 2
 format = 1
