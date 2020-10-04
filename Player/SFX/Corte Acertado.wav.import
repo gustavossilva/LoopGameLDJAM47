@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Corte Acertado.wav-78c829d39c693dfdc3b843639ba73034.sample"
+
+[deps]
+
+source_file="res://Player/SFX/Corte Acertado.wav"
+dest_files=[ "res://.import/Corte Acertado.wav-78c829d39c693dfdc3b843639ba73034.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

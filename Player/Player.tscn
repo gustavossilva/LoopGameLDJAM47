@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/SFX/spin.wav" type="AudioStream" id=7]
 [ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/Camera2D.gd" type="Script" id=9]
+[ext_resource path="res://Player/SFX/Corte Errado.wav" type="AudioStream" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -4.00739, -0.87471, 0.235229, -6.00123, 6.776, -2.28891, 1.47269, -1.58182 )
@@ -752,6 +753,10 @@ stream = ExtResource( 5 )
 
 [node name="sfxSpin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="SfxMiss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -12.117
 
 [node name="AxeHitboxPosition" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
