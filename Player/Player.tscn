@@ -705,7 +705,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.520279, -9.2973 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 54
+frame = 32
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 light_mask = 2
@@ -783,8 +783,8 @@ stream = ExtResource( 10 )
 volume_db = -12.117
 
 [node name="AxeHitboxPosition" type="Position2D" parent="."]
-position = Vector2( -6, -6 )
-rotation = 12.5664
+position = Vector2( 0, -6 )
+rotation = 3.14159
 
 [node name="Hitbox" parent="AxeHitboxPosition" instance=ExtResource( 6 )]
 collision_mask = 512

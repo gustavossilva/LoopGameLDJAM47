@@ -103,8 +103,6 @@ func on_finished_attack():
 	state = MOVE
 
 func reset_game():
-	print("entrei")
-	GameManager.set_fire_death()
 	GameManager.resetToGameLoop()
 
 func player_die():
@@ -117,5 +115,12 @@ func player_die():
 	animationState.travel("Die")
 
 func _on_Hurtbox_area_entered(_area):
+	var hitedLayer = get_collision_mask()
+	print(hitedLayer)
+	match hitedLayer:
+		3: GameManager.set_fire_death()
+		6: GameManager.set_sword_death()
+		7: GameManager.set_earth_death()
+		8: GameManager.set_eye_death()
 	if !GameManager.isDead:
 		player_die()
