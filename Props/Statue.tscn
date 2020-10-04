@@ -6,7 +6,13 @@
 [node name="Statue" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2( 0.0999985, -28 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
+[node name="Collision" parent="." index="1"]
+position = Vector2( 0.0999985, -28 )
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -12, 15, -5, 8, -5, 2, -7, 0, -11, 7, -15, 2, -15, -4, 15, -4, 15, 2, 11, 6, 10, 6, 6, 0, 6, 9, 12, 16, -12, 16 )
+position = Vector2( 0.0999985, -28 )
+polygon = PoolVector2Array( -12, 17, 12, 17, 23, 31, -24, 32 )
