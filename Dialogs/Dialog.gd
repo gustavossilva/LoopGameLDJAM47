@@ -9,3 +9,9 @@ func _process(_delta):
 		animationPlayer.playback_speed = SPEED_UP
 	else:
 		animationPlayer.playback_speed = 1
+
+func show_dialog():
+	self.visible = true
+	animationPlayer.play("Write")
+	set_process(true)
+	GameManager.isInteracting = true

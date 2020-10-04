@@ -34,7 +34,7 @@ __meta__ = {
 
 [node name="DialogPanel" type="Panel" parent="."]
 margin_left = -1.0
-margin_top = 228.0
+margin_top = 209.0
 margin_right = 480.0
 margin_bottom = 272.0
 __meta__ = {
@@ -43,9 +43,8 @@ __meta__ = {
 
 [node name="DialogText" type="Label" parent="DialogPanel"]
 margin_left = 1.0
-margin_top = 2.0
 margin_right = 478.0
-margin_bottom = 43.0
+margin_bottom = 65.0
 autowrap = true
 max_lines_visible = 4
 __meta__ = {
@@ -54,18 +53,19 @@ __meta__ = {
 
 [node name="Speaker" type="Panel" parent="."]
 margin_left = -1.0
-margin_top = 218.0
-margin_right = 50.0
-margin_bottom = 229.0
+margin_top = 193.0
+margin_right = 79.0
+margin_bottom = 209.0
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="SpeakerName" type="Label" parent="Speaker"]
 margin_left = 1.0
 margin_top = -1.0
-margin_right = 51.0
-margin_bottom = 13.0
+margin_right = 80.0
+margin_bottom = 19.0
 text = "Victemporis"
 autowrap = true
 __meta__ = {

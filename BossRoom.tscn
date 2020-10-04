@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BossRoom.gd" type="Script" id=2]
 [ext_resource path="res://Props/ShieldStatue.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Props/Statue.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/Grass.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/BossFire.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/DoorOpen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy/BossSword.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/UIBoss.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Props/Sofa.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -297,6 +299,9 @@ tracks/0/keys = {
 "values": [ -60.0, 90.0 ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 83, 18 )
+
 [node name="BossRoom" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -324,7 +329,7 @@ z_as_relative = false
 tile_data = PoolIntArray( -655360, 0, 0, -655359, 2, 0, -655358, 2, 0, -655357, 2, 0, -655356, 2, 0, -655355, 2, 0, -655354, 2, 0, -655353, 2, 0, -655352, 2, 0, -655351, 2, 0, -655350, 2, 0, -655349, 2, 0, -655348, 2, 0, -655347, 2, 0, -655346, 536870912, 0, -589824, 0, 0, -589823, 3, 0, -589822, 3, 0, -589821, 3, 0, -589820, 3, 0, -589819, 3, 0, -589818, 3, 0, -589817, 3, 0, -589816, 3, 0, -589815, 3, 0, -589814, 3, 0, -589813, 3, 0, -589812, 3, 0, -589811, 3, 0, -589810, 536870912, 0, -524288, 0, 0, -524287, 3, 0, -524286, 3, 0, -524285, 3, 0, -524284, 3, 0, -524283, 3, 0, -524282, 3, 0, -524281, 3, 0, -524280, 3, 0, -524279, 3, 0, -524278, 3, 0, -524277, 3, 0, -524276, 3, 0, -524275, 3, 0, -524274, 536870912, 0, -458752, 0, 0, -458751, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 3, 0, -458747, 3, 0, -458746, 3, 0, -458745, 3, 0, -458744, 3, 0, -458743, 3, 0, -458742, 3, 0, -458741, 3, 0, -458740, 3, 0, -458739, 3, 0, -458738, 536870912, 0, -393216, 0, 0, -393215, 3, 0, -393214, 3, 0, -393213, 3, 0, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -393209, 3, 0, -393208, 3, 0, -393207, 3, 0, -393206, 3, 0, -393205, 3, 0, -393204, 3, 0, -393203, 3, 0, -393202, 536870912, 0, -327680, 0, 0, -327679, 3, 0, -327678, 3, 0, -327677, 3, 0, -327676, 3, 0, -327675, 3, 0, -327674, 3, 0, -327673, 3, 0, -327672, 3, 0, -327671, 3, 0, -327670, 3, 0, -327669, 3, 0, -327668, 3, 0, -327667, 3, 0, -327666, 536870912, 0, -262144, 0, 0, -262143, 3, 0, -262142, 3, 0, -262141, 3, 0, -262140, 3, 0, -262139, 3, 0, -262138, 3, 0, -262137, 3, 0, -262136, 3, 0, -262135, 3, 0, -262134, 3, 0, -262133, 3, 0, -262132, 3, 0, -262131, 3, 0, -262130, 536870912, 0, -196608, 0, 0, -196607, 3, 0, -196606, 3, 0, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -196602, 3, 0, -196601, 3, 0, -196600, 3, 0, -196599, 3, 0, -196598, 3, 0, -196597, 3, 0, -196596, 3, 0, -196595, 3, 0, -196594, 536870912, 0, -131072, 0, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 0, -131066, 3, 0, -131065, 3, 0, -131064, 3, 0, -131063, 3, 0, -131062, 3, 0, -131061, 3, 0, -131060, 3, 0, -131059, 3, 0, -131058, 536870912, 0, -65536, 0, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 0, -65526, 3, 0, -65525, 3, 0, -65524, 3, 0, -65523, 3, 0, -65522, 536870912, 0, 0, 0, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 536870912, 0, 65536, 0, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 65548, 3, 0, 65549, 3, 0, 65550, 536870912, 0, 131072, 0, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131084, 3, 0, 131085, 3, 0, 131086, 536870912, 0, 196608, 0, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 3, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 196618, 3, 0, 196619, 3, 0, 196620, 3, 0, 196621, 3, 0, 196622, 536870912, 0, 262144, 0, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 262154, 3, 0, 262155, 3, 0, 262156, 3, 0, 262157, 8, 0, 327680, 0, 0, 327681, 3, 0, 327682, 3, 0, 327683, 3, 0, 327684, 3, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 536870912, 0, 393216, 0, 0, 393217, 3, 0, 393218, 3, 0, 393219, 3, 0, 393220, 3, 0, 393221, 3, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393227, 3, 0, 393228, 3, 0, 393229, 3, 0, 393230, 536870912, 0, 458752, 0, 0, 458753, 3, 0, 458754, 3, 0, 458755, 3, 0, 458756, 3, 0, 458757, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 3, 0, 458762, 3, 0, 458763, 3, 0, 458764, 3, 0, 458765, 3, 0, 458766, 536870912, 0, 524288, 0, 0, 524289, 3, 0, 524290, 3, 0, 524291, 3, 0, 524292, 3, 0, 524293, 3, 0, 524294, 3, 0, 524295, 3, 0, 524296, 3, 0, 524297, 3, 0, 524298, 3, 0, 524299, 3, 0, 524300, 3, 0, 524301, 3, 0, 524302, 536870912, 0, 589824, 0, 0, 589825, -1073741824, 0, 589826, -1073741824, 0, 589827, -1073741824, 0, 589828, -1073741824, 0, 589829, -1073741824, 0, 589830, -1073741824, 0, 589831, -1073741824, 0, 589832, -1073741824, 0, 589833, -1073741824, 0, 589834, -1073741824, 0, 589835, -1073741824, 0, 589836, -1073741824, 0, 589837, -1073741824, 0, 589838, 536870912, 0 )
 
 [node name="Divider" parent="Background" instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -327679, -2147483648, 0, -327678, -2147483648, 0, -327677, -2147483648, 0, -327676, -2147483648, 0, -327670, -2147483648, 0, -327669, -2147483648, 0, -327668, -2147483648, 0, -327667, -2147483648, 0 )
+tile_data = PoolIntArray( -327679, 2, 0, -327678, 2, 0, -327677, 2, 0, -327676, 2, 0, -327670, 2, 0, -327669, 2, 0, -327668, 2, 0, -327667, 2, 0 )
 
 [node name="DoorOpen" parent="." instance=ExtResource( 7 )]
 position = Vector2( 241, -304 )
@@ -340,896 +345,565 @@ parameters/playback = SubResource( 1 )
 [node name="Camera2D" parent="YSort/Player" index="5"]
 limit_top = -320
 
-[node name="Node2D" type="Node2D" parent="YSort"]
+[node name="FireAttack" type="Node2D" parent="YSort"]
 show_behind_parent = true
 
-[node name="FirstWave" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave2" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave2" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 32 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave2"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="FirstWave3" type="Node2D" parent="YSort/Node2D"]
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
+
+[node name="FirstWave3" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 64 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave3"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave4" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave4" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 96 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave4"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave5" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave5" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 128 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave5"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave6" type="Node2D" parent="YSort/Node2D"]
-modulate = Color( 1, 1, 1, 0.1 )
+[node name="FirstWave6" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 160 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave6"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave7" type="Node2D" parent="YSort/Node2D"]
-modulate = Color( 1, 1, 1, 0.1 )
+[node name="FirstWave7" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 192 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave7"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave8" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave8" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 224 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave8"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave8" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave9" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave9" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 256 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave9"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave9" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave10" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave10" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 288 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave10"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave10" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave11" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave11" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 320 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave11"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave11" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave12" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave12" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 352 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave12"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave12" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="FirstWave13" type="Node2D" parent="YSort/Node2D"]
+[node name="FirstWave13" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 384 )
 
-[node name="Grass" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 32, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 48, -112 )
 
-[node name="Grass2" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 64, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire2" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 80, -112 )
 
-[node name="Grass3" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 96, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire3" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 112, -112 )
 
-[node name="Grass4" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 128, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire4" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 144, -112 )
 
-[node name="Grass5" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 160, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire5" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 176, -112 )
 
-[node name="Grass6" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 192, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire6" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 208, -112 )
 
-[node name="Grass7" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 224, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire7" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 240, -112 )
 
-[node name="Grass8" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 256, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire8" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 272, -112 )
 
-[node name="Grass9" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 288, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire9" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 304, -112 )
 
-[node name="Grass10" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 320, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire10" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 336, -112 )
 
-[node name="Grass11" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 352, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire11" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 368, -112 )
 
-[node name="Grass12" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 384, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire12" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 400, -112 )
 
-[node name="Grass13" type="Sprite" parent="YSort/Node2D/FirstWave13"]
-position = Vector2( 416, -128 )
-texture = ExtResource( 6 )
-centered = false
+[node name="BossFire13" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
+position = Vector2( 432, -112 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Node2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/FireAttack"]
 autoplay = "FireWave"
 anims/FireWave = SubResource( 2 )
 
@@ -1245,6 +919,9 @@ position = Vector2( 343, 93 )
 [node name="StatueAnimations" type="AnimationPlayer" parent="YSort"]
 anims/MagiaDaDisney = SubResource( 3 )
 
+[node name="Sofa" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 240, -255 )
+
 [node name="BossSword" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 190.423, -192.357 )
@@ -1257,6 +934,14 @@ rotation = -1.0472
 
 [node name="AnimationPlayer" parent="BossSword2" index="2"]
 anims/Rotate = SubResource( 4 )
+
+[node name="UIBoss" parent="." instance=ExtResource( 9 )]
+
+[node name="BossAreaBlock" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossAreaBlock"]
+position = Vector2( 240, -146 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 
 [editable path="DoorOpen"]
