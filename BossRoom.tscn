@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BossRoom.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Enemy/BossSword.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/UIBoss.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Props/Sofa.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Torch.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemy/earth.png" type="Texture" id=12]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -299,26 +301,39 @@ tracks/0/keys = {
 "values": [ -60.0, 90.0 ]
 }
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 83, 17 )
+
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 83, 18 )
+extents = Vector2( 5, 303 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 6, 223 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 6, 69 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 6, 16 )
 
 [node name="BossRoom" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color( 0.52549, 0.52549, 0.52549, 1 )
+color = Color( 0.768627, 0.768627, 0.768627, 1 )
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="HiddenRoom2" parent="Background" instance=ExtResource( 1 )]
 visible = false
+light_mask = -2147483648
 tile_data = PoolIntArray( 196622, -1610612736, 0, 327694, -1073741824, 0 )
 
 [node name="HiddenRoom1" parent="Background" instance=ExtResource( 1 )]
 visible = false
+light_mask = 0
 z_as_relative = false
-tile_data = PoolIntArray( 65550, -2147483648, 0, 65551, -2147483648, 0, 65552, -2147483648, 0, 65553, -2147483648, 0, 65554, -2147483648, 0, 131086, 0, 0, 131087, 536870919, 0, 131088, 536870919, 0, 131089, 536870919, 0, 131090, 536870912, 0, 196622, 0, 0, 196623, 536870919, 0, 196624, 536870919, 0, 196625, 536870919, 0, 196626, 536870912, 0, 262158, 536870919, 0, 262159, 536870919, 0, 262160, 536870919, 0, 262161, 536870919, 0, 262162, 536870912, 0, 327694, 0, 0, 327695, 536870919, 0, 327696, 536870919, 0, 327697, 536870919, 0, 327698, 536870912, 0, 393230, 0, 0, 393231, 536870919, 0, 393232, 536870919, 0, 393233, 536870919, 0, 393234, 536870912, 0, 458766, 0, 0, 458767, -1073741824, 0, 458768, -1073741824, 0, 458769, -1073741824, 0, 458770, 536870912, 0 )
+tile_data = PoolIntArray( 65550, 0, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 536870912, 0, 131086, 0, 0, 131087, 536870919, 0, 131088, 536870919, 0, 131089, 536870919, 0, 131090, 536870912, 0, 196622, 0, 0, 196623, 536870919, 0, 196624, 536870919, 0, 196625, 536870919, 0, 196626, 536870912, 0, 262158, 536870919, 0, 262159, 536870919, 0, 262160, 536870919, 0, 262161, 536870919, 0, 262162, 536870912, 0, 327694, 0, 0, 327695, 536870919, 0, 327696, 536870919, 0, 327697, 536870919, 0, 327698, 536870912, 0, 393230, 0, 0, 393231, 536870919, 0, 393232, 536870919, 0, 393233, 536870919, 0, 393234, 536870912, 0, 458766, 0, 0, 458767, 2, 0, 458768, 2, 0, 458769, 2, 0, 458770, 536870912, 0 )
 
 [node name="BrokenWall" parent="Background" instance=ExtResource( 1 )]
 z_as_relative = false
@@ -347,6 +362,10 @@ limit_top = -320
 
 [node name="FireAttack" type="Node2D" parent="YSort"]
 show_behind_parent = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="FirstWave" type="Node2D" parent="YSort/FireAttack"]
 modulate = Color( 1, 1, 1, 0 )
@@ -903,17 +922,673 @@ position = Vector2( 400, -112 )
 [node name="BossFire13" parent="YSort/FireAttack/FirstWave13" instance=ExtResource( 6 )]
 position = Vector2( 432, -112 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/FireAttack"]
-autoplay = "FireWave"
+[node name="FireAttackAnimation" type="AnimationPlayer" parent="YSort/FireAttack"]
 anims/FireWave = SubResource( 2 )
 
+[node name="EarthAttack" type="Node2D" parent="YSort"]
+
+[node name="Node2D5" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 51, 258 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 24, -10 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 52, -41 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 80, -70 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 105, -96 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 130, -123 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 158, -152 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 187, -181 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 212, -209 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 240, -238 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 267, -266 )
+texture = ExtResource( 12 )
+
+[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 294, -293 )
+texture = ExtResource( 12 )
+
+[node name="Sprite13" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 319, -321 )
+texture = ExtResource( 12 )
+
+[node name="Sprite14" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 346, -348 )
+texture = ExtResource( 12 )
+
+[node name="Sprite15" type="Sprite" parent="YSort/EarthAttack/Node2D5"]
+position = Vector2( 374, -376 )
+texture = ExtResource( 12 )
+
+[node name="Node2D6" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 51, 218 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 24, -10 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 52, -41 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 80, -70 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 105, -96 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 130, -123 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 158, -152 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 187, -181 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 212, -209 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 240, -238 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 267, -266 )
+texture = ExtResource( 12 )
+
+[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 294, -293 )
+texture = ExtResource( 12 )
+
+[node name="Sprite13" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 319, -321 )
+texture = ExtResource( 12 )
+
+[node name="Sprite14" type="Sprite" parent="YSort/EarthAttack/Node2D6"]
+position = Vector2( 346, -348 )
+texture = ExtResource( 12 )
+
+[node name="Node2D15" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 101, 257 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 20, -14 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 48, -42 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 77, -73 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 103, -98 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 128, -126 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 157, -154 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 185, -185 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 211, -213 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 240, -243 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 268, -271 )
+texture = ExtResource( 12 )
+
+[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 296, -302 )
+texture = ExtResource( 12 )
+
+[node name="Sprite13" type="Sprite" parent="YSort/EarthAttack/Node2D15"]
+position = Vector2( 324, -331 )
+texture = ExtResource( 12 )
+
+[node name="Node2D16" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 143, 256 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 20, -14 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 48, -42 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 77, -73 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 103, -98 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 128, -126 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 157, -154 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 185, -185 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 211, -213 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 240, -243 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 263, -271 )
+texture = ExtResource( 12 )
+
+[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Node2D16"]
+position = Vector2( 286, -293 )
+texture = ExtResource( 12 )
+
+[node name="Node2D17" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 167, 274 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 16, -6 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 43, -36 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 73, -66 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 101, -93 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 128, -123 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 156, -151 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 186, -184 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 212, -210 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 239, -242 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D17"]
+position = Vector2( 261, -267 )
+texture = ExtResource( 12 )
+
+[node name="Node2D18" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 191, 296 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 40, -30 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 69, -62 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 101, -93 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 128, -123 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 156, -151 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 186, -184 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 212, -210 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D18"]
+position = Vector2( 239, -242 )
+texture = ExtResource( 12 )
+
+[node name="Node2D19" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 233, 297 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 40, -30 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 66, -58 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 94, -88 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 122, -116 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 150, -146 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 176, -174 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D19"]
+position = Vector2( 198, -196 )
+texture = ExtResource( 12 )
+
+[node name="Node2D20" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 280, 291 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D20"]
+position = Vector2( 39, -24 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D20"]
+position = Vector2( 66, -54 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D20"]
+position = Vector2( 94, -88 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D20"]
+position = Vector2( 122, -116 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D20"]
+position = Vector2( 150, -146 )
+texture = ExtResource( 12 )
+
+[node name="Node2D21" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 321, 292 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D21"]
+position = Vector2( 36, -25 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D21"]
+position = Vector2( 61, -52 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D21"]
+position = Vector2( 87, -79 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D21"]
+position = Vector2( 111, -107 )
+texture = ExtResource( 12 )
+
+[node name="Node2D22" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 351, 297 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D22"]
+position = Vector2( 40, -29 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D22"]
+position = Vector2( 61, -48 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D22"]
+position = Vector2( 82, -69 )
+texture = ExtResource( 12 )
+
+[node name="Node2D23" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 367, 313 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D23"]
+position = Vector2( 62, -44 )
+texture = ExtResource( 12 )
+
+[node name="Node2D7" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 49, 172 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 24, -10 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 52, -41 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 80, -70 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 105, -96 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 130, -123 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 158, -152 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 187, -181 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 212, -209 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 240, -238 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 267, -266 )
+texture = ExtResource( 12 )
+
+[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Node2D7"]
+position = Vector2( 294, -293 )
+texture = ExtResource( 12 )
+
+[node name="Node2D8" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 44, 132 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 24, -10 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 52, -41 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 80, -70 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 105, -96 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 130, -123 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 158, -152 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 187, -181 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 212, -209 )
+texture = ExtResource( 12 )
+
+[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 240, -238 )
+texture = ExtResource( 12 )
+
+[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Node2D8"]
+position = Vector2( 267, -266 )
+texture = ExtResource( 12 )
+
+[node name="Node2D9" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 49, 84 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 20, -14 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 50, -43 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 78, -72 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 104, -98 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 128, -125 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 156, -154 )
+texture = ExtResource( 12 )
+
+[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 185, -185 )
+texture = ExtResource( 12 )
+
+[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Node2D9"]
+position = Vector2( 212, -209 )
+texture = ExtResource( 12 )
+
+[node name="Node2D10" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 49, 40 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( 20, -14 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( 50, -43 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( 78, -72 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( 104, -98 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( 128, -125 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Node2D10"]
+position = Vector2( 156, -154 )
+texture = ExtResource( 12 )
+
+[node name="Node2D11" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 49, -4 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D11"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D11"]
+position = Vector2( 20, -14 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D11"]
+position = Vector2( 50, -43 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D11"]
+position = Vector2( 78, -72 )
+texture = ExtResource( 12 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Node2D11"]
+position = Vector2( 104, -98 )
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Node2D11"]
+position = Vector2( 128, -125 )
+texture = ExtResource( 12 )
+
+[node name="Node2D12" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 50, -51 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D12"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D12"]
+position = Vector2( 20, -14 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Node2D12"]
+position = Vector2( 50, -43 )
+texture = ExtResource( 12 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Node2D12"]
+position = Vector2( 78, -72 )
+texture = ExtResource( 12 )
+
+[node name="Node2D13" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 50, -97 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D13"]
+position = Vector2( -4, 13 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Node2D13"]
+position = Vector2( 30, -23 )
+texture = ExtResource( 12 )
+
+[node name="Node2D14" type="Node2D" parent="YSort/EarthAttack"]
+visible = false
+position = Vector2( 50, -97 )
+
+[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Node2D14"]
+position = Vector2( -4, -22 )
+texture = ExtResource( 12 )
+
 [node name="ShieldStatue" parent="YSort" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 239, -65 )
 
 [node name="Statue" parent="YSort" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 134, 93 )
 
 [node name="Statue2" parent="YSort" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 343, 93 )
 
 [node name="StatueAnimations" type="AnimationPlayer" parent="YSort"]
@@ -935,14 +1610,64 @@ rotation = -1.0472
 [node name="AnimationPlayer" parent="BossSword2" index="2"]
 anims/Rotate = SubResource( 4 )
 
-[node name="UIBoss" parent="." instance=ExtResource( 9 )]
+[node name="InitGameTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
 
 [node name="BossAreaBlock" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossAreaBlock"]
 position = Vector2( 240, -146 )
+shape = SubResource( 6 )
+
+[node name="LeftAreaBlock" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaBlock"]
+position = Vector2( 32, -10 )
 shape = SubResource( 5 )
+
+[node name="RightArea" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
+position = Vector2( 449, -94 )
+shape = SubResource( 7 )
+
+[node name="RightArea2" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea2"]
+position = Vector2( 449, 229 )
+shape = SubResource( 8 )
+
+[node name="RightDoor" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoor"]
+position = Vector2( 449, 144 )
+shape = SubResource( 9 )
+
+[node name="Torch" parent="." instance=ExtResource( 11 )]
+position = Vector2( 241, -258 )
+scale = Vector2( 5, 5 )
+
+[node name="UIBoss" parent="." instance=ExtResource( 9 )]
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]
+[connection signal="hide" from="UIBoss/Boss1" to="." method="_on_Boss1_hide"]
 
 [editable path="DoorOpen"]
 
@@ -951,3 +1676,5 @@ shape = SubResource( 5 )
 [editable path="BossSword"]
 
 [editable path="BossSword2"]
+
+[editable path="UIBoss"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Dialogs/BossDeath.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dialogs/BossEarthshake2.tscn" type="PackedScene" id=2]
@@ -12,11 +12,15 @@
 [ext_resource path="res://Dialogs/BossFireDeath2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Dialogs/BossFireDeath1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Dialogs/BossEye2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/UIBoss.gd" type="Script" id=13]
+[ext_resource path="res://Dialogs/Boss1.gd" type="Script" id=14]
 
 [node name="UIBoss" type="CanvasLayer"]
+script = ExtResource( 13 )
 
 [node name="Boss1" parent="." instance=ExtResource( 6 )]
 visible = false
+script = ExtResource( 14 )
 
 [node name="BossCrystalBreak" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -50,3 +54,10 @@ visible = false
 
 [node name="BossTired" parent="." instance=ExtResource( 9 )]
 visible = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Boss1"]
