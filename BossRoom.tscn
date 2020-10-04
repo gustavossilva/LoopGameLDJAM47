@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BossRoom.gd" type="Script" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Props/Statue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Grass.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/BossEye.png" type="Texture" id=7]
+[ext_resource path="res://World/DoorOpen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemy/BossSword.tscn" type="PackedScene" id=8]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "FireWave"
 length = 7.55
 step = 0.05
@@ -199,8 +200,7 @@ tracks/14/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "MagiaDaDisney"
+[sub_resource type="Animation" id=3]
 length = 3.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ShieldStatue:modulate")
@@ -281,6 +281,22 @@ tracks/5/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Rotate"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, 90.0 ]
+}
+
 [node name="BossRoom" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -310,15 +326,18 @@ tile_data = PoolIntArray( -655360, 0, 0, -655359, 2, 0, -655358, 2, 0, -655357, 
 [node name="Divider" parent="Background" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -327679, -2147483648, 0, -327678, -2147483648, 0, -327677, -2147483648, 0, -327676, -2147483648, 0, -327670, -2147483648, 0, -327669, -2147483648, 0, -327668, -2147483648, 0, -327667, -2147483648, 0 )
 
+[node name="DoorOpen" parent="." instance=ExtResource( 7 )]
+position = Vector2( 241, -304 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 224, 283 )
 
-[node name="AnimationTree" parent="YSort/Player" index="3"]
-parameters/playback = SubResource( 2 )
+[node name="AnimationTree" parent="YSort/Player" index="4"]
+parameters/playback = SubResource( 1 )
 
-[node name="Camera2D" parent="YSort/Player" index="4"]
+[node name="Camera2D" parent="YSort/Player" index="5"]
 limit_top = -320
 
 [node name="Node2D" type="Node2D" parent="YSort"]
@@ -1212,7 +1231,7 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Node2D"]
 autoplay = "FireWave"
-anims/FireWave = SubResource( 3 )
+anims/FireWave = SubResource( 2 )
 
 [node name="ShieldStatue" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 239, -65 )
@@ -1224,10 +1243,26 @@ position = Vector2( 134, 93 )
 position = Vector2( 343, 93 )
 
 [node name="StatueAnimations" type="AnimationPlayer" parent="YSort"]
-anims/MagiaDaDisney = SubResource( 1 )
+anims/MagiaDaDisney = SubResource( 3 )
 
-[node name="BossEye" type="Sprite" parent="."]
-position = Vector2( 222, 60 )
-texture = ExtResource( 7 )
+[node name="BossSword" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 190.423, -192.357 )
+rotation = 1.0472
+
+[node name="BossSword2" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 329.015, -194.877 )
+rotation = -1.0472
+
+[node name="AnimationPlayer" parent="BossSword2" index="2"]
+anims/Rotate = SubResource( 4 )
+[connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
+
+[editable path="DoorOpen"]
 
 [editable path="YSort/Player"]
+
+[editable path="BossSword"]
+
+[editable path="BossSword2"]

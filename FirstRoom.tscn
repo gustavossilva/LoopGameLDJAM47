@@ -28,6 +28,9 @@ position = Vector2( 240, 16 )
 [node name="Torch" parent="." instance=ExtResource( 8 )]
 position = Vector2( 206, 20 )
 
+[node name="Particles2D" parent="Torch" index="4"]
+visible = true
+
 [node name="Sprite" type="Sprite" parent="Torch"]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
@@ -37,6 +40,9 @@ position = Vector2( 314, 20 )
 
 [node name="NearLight" parent="Torch5" index="2"]
 position = Vector2( 0, 0 )
+
+[node name="Particles2D" parent="Torch5" index="4"]
+visible = true
 
 [node name="Sprite" type="Sprite" parent="Torch5"]
 scale = Vector2( 0.5, 0.5 )
