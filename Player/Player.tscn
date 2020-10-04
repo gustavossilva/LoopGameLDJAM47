@@ -360,31 +360,31 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 40, 41, 42, 43 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hurtbox/HurtboxCollision:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "reset_game"
-} ]
+"update": 1,
+"values": [ true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Hurtbox/HurtboxCollision:disabled")
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.9 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ {
+"args": [  ],
+"method": "reset_game"
+} ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -433,6 +433,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hurtbox/HurtboxCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -655,7 +667,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.520279, -9.2973 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 24
+frame = 43
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 light_mask = 2
@@ -727,6 +739,7 @@ stream = ExtResource( 7 )
 
 [node name="AxeHitboxPosition" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
+rotation = 1.5708
 
 [node name="Hitbox" parent="AxeHitboxPosition" instance=ExtResource( 6 )]
 collision_mask = 8
@@ -743,6 +756,7 @@ collision_mask = 4
 
 [node name="HurtboxCollision" parent="Hurtbox" index="0"]
 shape = SubResource( 46 )
+disabled = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="AxeHitboxPosition/Hitbox"]

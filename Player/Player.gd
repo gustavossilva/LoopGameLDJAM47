@@ -32,19 +32,10 @@ func _ready():
 	animationTree.active = true
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_home"):
-		GameManager.isDead = true
-		return
 	if GameManager.isInteracting:
 		animationState.travel("Idle")
 		return
 	if GameManager.isDead:
-		footParticle.emitting = false
-		velocity = Vector2.ZERO
-		if !dieSoundPlaying:
-			dieSound.play()
-		dieSoundPlaying = true
-		animationState.travel("Die")
 		return
 	match state:
 		MOVE:
@@ -109,9 +100,18 @@ func on_finished_attack():
 	state = MOVE
 
 func reset_game():
+	print("entrei")
 	GameManager.resetToGameLoop()
 
+func player_die():
+	GameManager.isDead = true
+	footParticle.emitting = false
+	velocity = Vector2.ZERO
+	if !dieSoundPlaying:
+		dieSound.play()
+	dieSoundPlaying = true
+	animationState.travel("Die")
 
-func _on_Hurtbox_area_entered(area):
-	print(area)
-	print("morri")
+func _on_Hurtbox_area_entered(_area):
+	if !GameManager.isDead:
+		player_die()
