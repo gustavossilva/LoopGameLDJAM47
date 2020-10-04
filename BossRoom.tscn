@@ -879,6 +879,7 @@ __meta__ = {
 }
 
 [node name="FirstWave" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -929,8 +930,10 @@ collision_mask = 0
 [node name="Wave1Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave/Area2D"]
 position = Vector2( 240, -112 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="FirstWave2" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 32 )
 
 [node name="BossFire" parent="YSort/FireAttack/FirstWave2" instance=ExtResource( 6 )]
@@ -976,6 +979,7 @@ collision_mask = 0
 [node name="Wave2Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave2/Area2D"]
 position = Vector2( 128, -112 )
 shape = SubResource( 3 )
+disabled = true
 
 [node name="Area2D2" type="Area2D" parent="YSort/FireAttack/FirstWave2"]
 collision_layer = 4
@@ -984,8 +988,10 @@ collision_mask = 0
 [node name="Wave2Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave2/Area2D2"]
 position = Vector2( 352, -112 )
 shape = SubResource( 3 )
+disabled = true
 
 [node name="FirstWave3" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 64 )
 
 [node name="BossFire" parent="YSort/FireAttack/FirstWave3" instance=ExtResource( 6 )]
@@ -1031,6 +1037,7 @@ collision_mask = 0
 [node name="Wave3Shape1" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave3/Area2D"]
 position = Vector2( 129, -112 )
 shape = ExtResource( 13 )
+disabled = true
 
 [node name="Area2D2" type="Area2D" parent="YSort/FireAttack/FirstWave3"]
 collision_layer = 4
@@ -1039,8 +1046,10 @@ collision_mask = 0
 [node name="Wave3Shape2" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave3/Area2D2"]
 position = Vector2( 353, -112 )
 shape = ExtResource( 13 )
+disabled = true
 
 [node name="FirstWave4" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 96 )
 
 [node name="BossFire" parent="YSort/FireAttack/FirstWave4" instance=ExtResource( 6 )]
@@ -1089,8 +1098,10 @@ collision_mask = 2147483648
 [node name="Wave4Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave4/Area2D"]
 position = Vector2( 240, -112 )
 shape = ExtResource( 14 )
+disabled = true
 
 [node name="FirstWave5" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 128 )
 
 [node name="BossFire" parent="YSort/FireAttack/FirstWave5" instance=ExtResource( 6 )]
@@ -1139,8 +1150,10 @@ collision_mask = 0
 [node name="Wave5Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave5/Area2D"]
 position = Vector2( 240, -112 )
 shape = ExtResource( 14 )
+disabled = true
 
 [node name="FirstWave6" type="Node2D" parent="YSort/FireAttack"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 160 )
 
 [node name="BossFire" parent="YSort/FireAttack/FirstWave6" instance=ExtResource( 6 )]
@@ -1189,9 +1202,10 @@ collision_mask = 0
 [node name="Wave6Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave6/Area2D"]
 position = Vector2( 240, -112 )
 shape = ExtResource( 14 )
+disabled = true
 
 [node name="FirstWave7" type="Node2D" parent="YSort/FireAttack"]
-modulate = Color( 1, 1, 1, 0.5 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 192 )
 
 [node name="BossFire" parent="YSort/FireAttack/FirstWave7" instance=ExtResource( 6 )]
