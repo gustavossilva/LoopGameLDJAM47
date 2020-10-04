@@ -115,6 +115,11 @@ attack={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="World"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="BossHurtLayer"
+2d_physics/layer_5="PlayerHurtLayer"
+2d_physics/layer_6="SwordEnemy"
+2d_physics/layer_7="EarthEnemy"
+2d_physics/layer_8="EyeEnemy"
 
 [rendering]
 
