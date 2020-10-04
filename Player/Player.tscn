@@ -511,6 +511,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 6 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hurtbox/HurtboxCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=16]
 length = 0.1
@@ -657,8 +669,8 @@ radius = 10.0428
 height = 11.6195
 
 [sub_resource type="CapsuleShape2D" id=46]
-radius = 6.48513
-height = 9.66302
+radius = 4.14964
+height = 8.17464
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
@@ -668,7 +680,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.520279, -9.2973 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 43
+frame = 7
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 light_mask = 2
@@ -756,11 +768,10 @@ disabled = true
 [node name="Hurtbox" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -9.065 )
 collision_layer = 16
-collision_mask = 4
+collision_mask = 228
 
 [node name="HurtboxCollision" parent="Hurtbox" index="0"]
 shape = SubResource( 46 )
-disabled = true
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
