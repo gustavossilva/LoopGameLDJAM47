@@ -813,6 +813,20 @@ tracks/6/keys = {
 "method": "play"
 } ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_earth_attack"
+} ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 1.5
@@ -2402,11 +2416,15 @@ collision_mask = 512
 shape = SubResource( 15 )
 
 [node name="RightDoorDestructable" type="StaticBody2D" parent="."]
-collision_layer = 256
-collision_mask = 512
+collision_layer = 2
+collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RightDoorDestructable"]
+position = Vector2( 449, 144 )
+shape = SubResource( 15 )
 
 [node name="Torch" parent="." instance=ExtResource( 11 )]
 position = Vector2( 241, -258 )

@@ -6,6 +6,12 @@ onready var hiddenRoom1 = $Background/HiddenRoom1
 onready var hiddenRoom2 = $Background/HiddenRoom2
 onready var brokenWall = $Background/BrokenWall
 onready var rightDestructableArea = $RightDestructableArea
+onready var rightDoorDestructable = $RightDoorDestructable
+
+var earthAttack = false
+
+func set_earth_attack():
+	earthAttack = true
 
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
@@ -24,8 +30,9 @@ func _on_InitGameTimer_timeout():
 
 
 func _on_RightDestructableArea_body_entered(body):
-	hiddenRoom1.visible = true
-	hiddenRoom2.visible = true
-	brokenWall.visible = false
-	rightDestructableArea.queue_free()
-	pass
+	if earthAttack:
+		hiddenRoom1.visible = true
+		hiddenRoom2.visible = true
+		brokenWall.visible = false
+		rightDoorDestructable.queue_free()
+		rightDestructableArea.queue_free()
