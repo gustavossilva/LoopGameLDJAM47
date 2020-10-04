@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Dialogs/HintOne.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dialogs/HintTwo.tscn" type="PackedScene" id=2]
@@ -6,6 +6,24 @@
 [ext_resource path="res://Dialogs/HintThree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Dialogs/HintFour.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Dialogs/AdventurerSword2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Dialogs/AdventurerSword1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Dialogs/AdventurerDeathFire2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Dialogs/AdventurerEarthshake1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Dialogs/AdventurerDeathFire1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Dialogs/AdventurerFirst.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Dialogs/AdventurerEye1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Dialogs/AdventurerEarthshake2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Dialogs/AdventurerEye2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Dialogs/AdventurerFirst.gd" type="Script" id=16]
+[ext_resource path="res://Dialogs/AdventurerDeathFire1.gd" type="Script" id=17]
+[ext_resource path="res://Dialogs/AdventurerDeathFire2.gd" type="Script" id=18]
+[ext_resource path="res://Dialogs/AdventurerEarthshake1.gd" type="Script" id=19]
+[ext_resource path="res://Dialogs/AdventurerEarthshake2.gd" type="Script" id=20]
+[ext_resource path="res://Dialogs/AdventurerEye1.gd" type="Script" id=21]
+[ext_resource path="res://Dialogs/AdventurerEye2.gd" type="Script" id=22]
+[ext_resource path="res://Dialogs/AdventurerSword1.gd" type="Script" id=23]
+[ext_resource path="res://Dialogs/AdventurerSword2.gd" type="Script" id=24]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Tutorial"
@@ -96,6 +114,47 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 autoplay = "Tutorial"
 anims/Tutorial = SubResource( 1 )
+
+[node name="AventurerDeathFire1" parent="." instance=ExtResource( 11 )]
+visible = false
+script = ExtResource( 17 )
+
+[node name="AdventurerDeathFire2" parent="." instance=ExtResource( 9 )]
+visible = false
+script = ExtResource( 18 )
+
+[node name="AdventurerEarthshake1" parent="." instance=ExtResource( 10 )]
+visible = false
+script = ExtResource( 19 )
+
+[node name="AdventurerEarthshake2" parent="." instance=ExtResource( 14 )]
+visible = false
+script = ExtResource( 20 )
+
+[node name="AdventurerEye1" parent="." instance=ExtResource( 13 )]
+visible = false
+script = ExtResource( 21 )
+
+[node name="AdventurerEye2" parent="." instance=ExtResource( 15 )]
+visible = false
+script = ExtResource( 22 )
+
+[node name="AdventurerFirst" parent="." instance=ExtResource( 12 )]
+visible = false
+script = ExtResource( 16 )
+
+[node name="AdventurerSword1" parent="." instance=ExtResource( 8 )]
+visible = false
+script = ExtResource( 23 )
+
+[node name="AdventurerSword2" parent="." instance=ExtResource( 7 )]
+visible = false
+script = ExtResource( 24 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
 [connection signal="hide" from="HintOne" to="HintTwo" method="_on_HintOne_hide"]
 [connection signal="hide" from="HintTwo" to="HintThree" method="_on_HintTwo_hide"]
 [connection signal="hide" from="HintThree" to="HintFour" method="_on_HintThree_hide"]

@@ -15,7 +15,7 @@ points = PoolVector2Array( 32, 32, 24, 32, 24, 0, 32, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=4]
 0/name = "wall.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -221,7 +221,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 9/z_index = 0
 
 [node name="TileMap" type="TileMap"]
-tile_set = SubResource( 3 )
+tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 0, 0, 0, 1, 0, 0 )
 collision_layer = 2
