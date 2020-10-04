@@ -6,23 +6,24 @@ enum {
 	CHARGE_ATTACK
 }
 
-var velocity = Vector2.ZERO
-
-export(int) var MAX_SPEED = 75
 const ACCELERATION = 500
 const FRICTION = 1000
-
-export(int) var MAX_SPEED_ATTACKING = 40
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var footParticle = $FootParticle2D
 onready var lightSprite = $Light
+onready var dieSound = $SfxDie
+onready var chargedSound = $SfxCharged
 
+var dieSoundPlaying = false
+var chargedIsPlaying = false
 var state = MOVE
-
+var velocity = Vector2.ZERO
 var timePressingAttack = 0
+export(int) var MAX_SPEED_ATTACKING = 40
+export(int) var MAX_SPEED = 75
 export(float) var timeToChargeAttack = 1.5
 
 func _ready():
@@ -38,6 +39,9 @@ func _physics_process(delta):
 	if GameManager.isDead:
 		footParticle.emitting = false
 		velocity = Vector2.ZERO
+		if !dieSoundPlaying:
+			dieSound.play()
+		dieSoundPlaying = true
 		animationState.travel("Die")
 		return
 	match state:
@@ -72,11 +76,13 @@ func move(delta):
 	if Input.is_action_pressed("attack") && state != CHARGE_ATTACK && state != ATTACK:
 		timePressingAttack += delta
 		var moduleAlpha = int(timePressingAttack * 100)
+		if timePressingAttack >= 1.5 && !chargedIsPlaying:
+			chargedIsPlaying = true
+			chargedSound.play()
 		lightSprite.modulate.a8 = clamp(moduleAlpha, 0, 150)
 		
 	if Input.is_action_just_released("attack"):
 		if(timePressingAttack >= timeToChargeAttack):
-			print("charge attack")
 			state = CHARGE_ATTACK
 		else:
 			state = ATTACK
@@ -89,6 +95,7 @@ func attack(delta):
 	animationState.travel("Attack")
 	
 func charge_attack(delta):
+	chargedIsPlaying = false
 	animationState.travel("ChargeAttack")
 	move(delta)
 	
