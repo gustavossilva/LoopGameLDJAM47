@@ -37,7 +37,7 @@ tracks/0/keys = {
 [node name="AdventurerEye1" instance=ExtResource( 1 )]
 
 [node name="DialogText" parent="DialogPanel" index="0"]
-text = "M-my body!! I can still feel it in my soul…”"
+text = "M-my body!! I can still feel it in my soul…"
 
 [node name="SpeakerName" parent="Speaker" index="0"]
 text = "Adventurer"

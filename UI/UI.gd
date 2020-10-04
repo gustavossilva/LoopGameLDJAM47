@@ -26,20 +26,20 @@ func _process(delta):
 				else:
 					adventurerDeathFire2.show_dialog()
 			GameManager.deathTypes.EARTH:
-				if (GameManager.firedeath <= 1):
+				if (GameManager.earthdeath <= 1):
 					adventurerEarthshake1.show_dialog()
 				else:
 					adventurerEarthshake2.show_dialog()
 			GameManager.deathTypes.SWORD:
-				if (GameManager.firedeath <= 1):
+				if (GameManager.sworddeath <= 1):
 					adventurerSword1.show_dialog()
 				else:
 					adventurerSword2.show_dialog()
 			GameManager.deathTypes.EYE:
-				if (GameManager.firedeath <= 1):
+				if (GameManager.eyedeath <= 1):
 					adventurerEye1.show_dialog()
 				else:
-					adventurerEarthshake2.show_dialog()
+					adventurerEye2.show_dialog()
 		showDialog = false
 
 func _on_Book_open_book():

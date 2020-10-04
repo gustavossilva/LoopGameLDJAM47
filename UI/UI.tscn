@@ -115,7 +115,7 @@ __meta__ = {
 autoplay = "Tutorial"
 anims/Tutorial = SubResource( 1 )
 
-[node name="AventurerDeathFire1" parent="." instance=ExtResource( 11 )]
+[node name="AdventurerDeathFire1" parent="." instance=ExtResource( 11 )]
 visible = false
 script = ExtResource( 17 )
 
