@@ -22,7 +22,7 @@ tracks/0/keys = {
 }
 
 [node name="BossSword" type="Node2D"]
-rotation = -1.5708
+rotation = 1.0472
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -112, 1 )

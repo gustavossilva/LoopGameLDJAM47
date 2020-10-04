@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BossRoom.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Enemy/FireCollisionShape2.tres" type="Shape2D" id=13]
 [ext_resource path="res://Enemy/FireCollisionShape.tres" type="Shape2D" id=14]
 [ext_resource path="res://EarthAttack.gd" type="Script" id=15]
+[ext_resource path="res://Enemy/BossCrystal.tscn" type="PackedScene" id=16]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -393,7 +394,7 @@ tracks/29/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 22.6186, 336.752 )
+extents = Vector2( 0.608116, 336.752 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 56.8106, 155.271 )
@@ -687,9 +688,33 @@ tracks/23/loop_wrap = true
 tracks/23/imported = false
 tracks/23/enabled = true
 tracks/23/keys = {
-"times": PoolRealArray( 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 7.9, 8.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
+"args": [  ],
+"method": "shake_on_spawn"
+}, {
 "args": [  ],
 "method": "shake_on_spawn"
 }, {
@@ -902,6 +927,20 @@ parameters/playback = SubResource( 1 )
 
 [node name="Camera2D" parent="YSort/Player" index="5"]
 limit_top = -320
+
+[node name="Cryistals" type="Node2D" parent="YSort"]
+
+[node name="BossCrystal" parent="YSort/Cryistals" instance=ExtResource( 16 )]
+position = Vector2( 164, -3 )
+
+[node name="BossCrystal2" parent="YSort/Cryistals" instance=ExtResource( 16 )]
+position = Vector2( 217, 24 )
+
+[node name="BossCrystal3" parent="YSort/Cryistals" instance=ExtResource( 16 )]
+position = Vector2( 268, 24 )
+
+[node name="BossCrystal4" parent="YSort/Cryistals" instance=ExtResource( 16 )]
+position = Vector2( 314, -5 )
 
 [node name="FireAttack" type="Node2D" parent="YSort"]
 show_behind_parent = true
@@ -2356,7 +2395,6 @@ position = Vector2( 240, -255 )
 [node name="BossSword" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 190.423, -192.357 )
-rotation = 1.0472
 
 [node name="BossSword2" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -2432,6 +2470,14 @@ scale = Vector2( 5, 5 )
 
 [node name="UIBoss" parent="." instance=ExtResource( 9 )]
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="YSort/Cryistals/BossCrystal" method="queue_free"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="YSort/Cryistals/BossCrystal2" method="queue_free"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="YSort/Cryistals/BossCrystal3" method="queue_free"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="YSort/Cryistals/BossCrystal4" method="queue_free"]
 [connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]
 [connection signal="area_entered" from="RightDestructableArea" to="." method="_on_RightDestructableArea_area_entered"]
 [connection signal="hide" from="UIBoss/Boss1" to="." method="_on_Boss1_hide"]
@@ -2439,6 +2485,14 @@ scale = Vector2( 5, 5 )
 [editable path="DoorOpen"]
 
 [editable path="YSort/Player"]
+
+[editable path="YSort/Cryistals/BossCrystal"]
+
+[editable path="YSort/Cryistals/BossCrystal2"]
+
+[editable path="YSort/Cryistals/BossCrystal3"]
+
+[editable path="YSort/Cryistals/BossCrystal4"]
 
 [editable path="BossSword"]
 

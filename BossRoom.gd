@@ -7,8 +7,11 @@ onready var hiddenRoom2 = $Background/HiddenRoom2
 onready var brokenWall = $Background/BrokenWall
 onready var rightDestructableArea = $RightDestructableArea
 onready var rightDoorDestructable = $RightDoorDestructable
+onready var bossSword1 = $BossSword
+onready var bossSword2 = $BossSword2
 
 var earthAttack = false
+var crystals = 4
 
 func set_earth_attack():
 	earthAttack = true
@@ -36,3 +39,9 @@ func _on_RightDestructableArea_area_entered(area):
 		brokenWall.visible = false
 		rightDoorDestructable.queue_free()
 		rightDestructableArea.queue_free()
+
+func _on_Area2DCrystal_area_entered(area):
+	crystals -= 1
+	if crystals == 0:
+		bossSword1.queue_free()
+		bossSword2.queue_free()
