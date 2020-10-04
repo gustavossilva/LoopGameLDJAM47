@@ -2310,15 +2310,12 @@ disabled = true
 anims/Attack = SubResource( 8 )
 
 [node name="ShieldStatue" parent="YSort" instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 239, -65 )
 
 [node name="Statue" parent="YSort" instance=ExtResource( 5 )]
-visible = false
 position = Vector2( 134, 93 )
 
 [node name="Statue2" parent="YSort" instance=ExtResource( 5 )]
-visible = false
 position = Vector2( 343, 93 )
 
 [node name="StatueAnimations" type="AnimationPlayer" parent="YSort"]
