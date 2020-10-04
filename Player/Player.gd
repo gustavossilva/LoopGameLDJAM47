@@ -81,7 +81,7 @@ func move(delta):
 			chargedSound.play()
 		lightSprite.modulate.a8 = clamp(moduleAlpha, 0, 150)
 		
-	if Input.is_action_just_released("attack"):
+	if Input.is_action_just_released("attack") && state != CHARGE_ATTACK && state != ATTACK:
 		if(timePressingAttack >= timeToChargeAttack):
 			state = CHARGE_ATTACK
 		else:
@@ -89,7 +89,7 @@ func move(delta):
 		lightSprite.modulate.a = 0
 		timePressingAttack = 0
 		
-func attack(delta):
+func attack(_delta):
 	footParticle.emitting = false
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")

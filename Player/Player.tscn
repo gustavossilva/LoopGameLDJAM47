@@ -452,7 +452,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.520279, -9.2973 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 12
+frame = 6
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 light_mask = 2
@@ -489,9 +489,10 @@ anims/idleLeft = SubResource( 16 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 42 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 43 )
 parameters/Attack/blend_position = Vector2( 0, 0 )
-parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0, -0.14 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
