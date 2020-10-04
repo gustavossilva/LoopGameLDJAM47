@@ -14,7 +14,7 @@ onready var timer = $Timer
 
 var showDialog = true
 
-func _process(delta):
+func _process(_delta):
 	if GameManager.loopTimes == 0 and showDialog and timer.time_left == 0:
 		adventurerFirst.show_dialog()
 		showDialog = false

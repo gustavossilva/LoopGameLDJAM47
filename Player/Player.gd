@@ -101,6 +101,7 @@ func on_finished_attack():
 
 func reset_game():
 	print("entrei")
+	GameManager.set_fire_death()
 	GameManager.resetToGameLoop()
 
 func player_die():

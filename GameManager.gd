@@ -13,7 +13,7 @@ var sworddeath = 0
 var earthdeath = 0
 var eyedeath = 0
 
-func set_fire_death(value):
+func set_fire_death():
 	firedeath += 1
 	actualDeathType = deathTypes.FIRE
 
