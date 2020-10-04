@@ -114,13 +114,13 @@ func player_die():
 	dieSoundPlaying = true
 	animationState.travel("Die")
 
-func _on_Hurtbox_area_entered(_area):
-	var hitedLayer = get_collision_mask()
+func _on_Hurtbox_area_entered(area):
+	var hitedLayer = area.get_collision_layer()
 	print(hitedLayer)
 	match hitedLayer:
-		3: GameManager.set_fire_death()
-		6: GameManager.set_sword_death()
-		7: GameManager.set_earth_death()
-		8: GameManager.set_eye_death()
+		4: GameManager.set_fire_death()
+		32: GameManager.set_sword_death()
+		64: GameManager.set_earth_death()
+		128: GameManager.set_eye_death()
 	if !GameManager.isDead:
 		player_die()

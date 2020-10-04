@@ -394,7 +394,7 @@ tracks/29/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 0.608116, 336.752 )
+extents = Vector2( 22.6186, 336.752 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 56.8106, 155.271 )
@@ -1653,6 +1653,7 @@ shape = ExtResource( 14 )
 disabled = true
 
 [node name="FireAttackAnimation" type="AnimationPlayer" parent="YSort/FireAttack"]
+playback_process_mode = 0
 anims/FireWave = SubResource( 4 )
 
 [node name="EarthAttack" type="Node2D" parent="YSort"]
@@ -2388,6 +2389,7 @@ shape = SubResource( 7 )
 disabled = true
 
 [node name="EarthAttackAnimation" type="AnimationPlayer" parent="YSort/EarthAttack"]
+playback_process_mode = 0
 playback_speed = 0.5
 anims/Attack = SubResource( 8 )
 
@@ -2496,10 +2498,10 @@ scale = Vector2( 5, 5 )
 wait_time = 7.0
 one_shot = true
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="YSort/Cryistals/BossCrystal" method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="YSort/Cryistals/BossCrystal2" method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="YSort/Cryistals/BossCrystal3" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="YSort/Cryistals/BossCrystal4" method="_on_Area2DCrystal_area_entered"]
