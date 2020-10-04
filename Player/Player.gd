@@ -110,3 +110,8 @@ func on_finished_attack():
 
 func reset_game():
 	GameManager.resetToGameLoop()
+
+
+func _on_Hurtbox_area_entered(area):
+	print(area)
+	print("morri")

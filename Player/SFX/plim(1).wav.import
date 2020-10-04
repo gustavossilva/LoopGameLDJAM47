@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/plim(1).wav-bed7cfed3bdf9f00c2a41169a803acb7.sample"
+
+[deps]
+
+source_file="res://Player/SFX/plim(1).wav"
+dest_files=[ "res://.import/plim(1).wav-bed7cfed3bdf9f00c2a41169a803acb7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

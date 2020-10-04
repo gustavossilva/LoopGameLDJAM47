@@ -1,12 +1,13 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://World/light.png" type="Texture" id=3]
 [ext_resource path="res://Player/SFX/pain5.wav" type="AudioStream" id=4]
-[ext_resource path="res://Player/SFX/Golpe Carregado.wav" type="AudioStream" id=5]
+[ext_resource path="res://Player/SFX/plim(1).wav" type="AudioStream" id=5]
 [ext_resource path="res://CollisionBoxes/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/SFX/spin.wav" type="AudioStream" id=7]
+[ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -4.00739, -0.87471, 0.235229, -6.00123, 6.776, -2.28891, 1.47269, -1.58182 )
@@ -373,6 +374,18 @@ tracks/1/keys = {
 "method": "reset_game"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtbox/HurtboxCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.1
@@ -630,6 +643,10 @@ color = Color( 1, 1, 1, 0.666667 )
 radius = 10.0428
 height = 11.6195
 
+[sub_resource type="CapsuleShape2D" id=46]
+radius = 6.48513
+height = 9.66302
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
 script = ExtResource( 2 )
@@ -638,7 +655,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.520279, -9.2973 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 54
+frame = 24
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 light_mask = 2
@@ -709,8 +726,7 @@ stream = ExtResource( 5 )
 stream = ExtResource( 7 )
 
 [node name="AxeHitboxPosition" type="Position2D" parent="."]
-position = Vector2( -6, -6 )
-rotation = 12.5664
+position = Vector2( 0, -6 )
 
 [node name="Hitbox" parent="AxeHitboxPosition" instance=ExtResource( 6 )]
 collision_mask = 8
@@ -720,4 +736,15 @@ position = Vector2( 16.764, 0 )
 shape = SubResource( 45 )
 disabled = true
 
+[node name="Hurtbox" parent="." instance=ExtResource( 8 )]
+position = Vector2( 0, -9.065 )
+collision_layer = 16
+collision_mask = 4
+
+[node name="HurtboxCollision" parent="Hurtbox" index="0"]
+shape = SubResource( 46 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
 [editable path="AxeHitboxPosition/Hitbox"]
+
+[editable path="Hurtbox"]
