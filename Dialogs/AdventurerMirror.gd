@@ -8,5 +8,3 @@ func _process(_delta):
 		self.visible = false
 		hide()
 		animationPlayer.play("Idle")
-		set_process(false)
-		GameManager.isInteracting = false
