@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menus/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=2]
@@ -6,6 +6,34 @@
 [ext_resource path="res://Menus/UNHOLY_ECHO_1.png" type="Texture" id=4]
 
 [sub_resource type="Theme" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "fadeout"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="StartMenu" type="Control"]
 anchor_right = 1.0
@@ -24,7 +52,8 @@ texture = ExtResource( 4 )
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 139.0
+margin_top = 144.0
+margin_bottom = 5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,6 +101,19 @@ text = "Quit"
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 272.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fadeout" type="AnimationPlayer" parent="."]
+autoplay = "fadeout"
+anims/fadeout = SubResource( 2 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ToolButton" to="." method="_on_ToolButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]

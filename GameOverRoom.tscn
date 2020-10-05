@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GameOverRoom.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Tela_final.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/Music/Ending.ogg" type="AudioStream" id=3]
+[ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=4]
+[ext_resource path="res://World/light.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Animation"
@@ -20,6 +22,69 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "Animate"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationText")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 5.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Blink", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Blink"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.5, 1.0 ]
+}
+
 [node name="GameOverRoom" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -31,7 +96,7 @@ texture = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 483.0
 margin_bottom = 274.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,3 +109,38 @@ anims/Animation = SubResource( 1 )
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+margin_left = 162.0
+margin_top = 174.0
+margin_right = 308.0
+margin_bottom = 194.0
+text = "Press enter to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationText" type="AnimationPlayer" parent="."]
+autoplay = "Animate"
+anims/Animate = SubResource( 2 )
+anims/Blink = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 245, 58 )
+scale = Vector2( 0.00830081, 0.00830081 )
+texture = ExtResource( 5 )
+color = Color( 0.898039, 0.027451, 0.0392157, 1 )
+
+[node name="LightBlink" type="AnimationPlayer" parent="."]
+autoplay = "Blink"
+anims/Blink = SubResource( 4 )

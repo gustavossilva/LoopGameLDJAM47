@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="LoopGameLDJAM47"
+config/name="Unholy Echo"
 run/main_scene="res://Menus/StartMenu.tscn"
 config/icon="res://icon.png"
 
