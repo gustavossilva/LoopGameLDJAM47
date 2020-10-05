@@ -73,7 +73,6 @@ func _on_RightDestructableArea_area_entered(_area):
 		rightDestructableArea.queue_free()
 
 func _on_Area2DCrystal_area_entered(_area):
-	crystalSfx.play()
 	crystals -= 1
 	if crystals == 0:
 		bossSword1.queue_free()
