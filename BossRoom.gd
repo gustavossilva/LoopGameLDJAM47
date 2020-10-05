@@ -12,6 +12,8 @@ onready var bossSword1 = $BossSword
 onready var bossSword2 = $BossSword2
 onready var swordAttackTimer = $SwordAttackTimer
 onready var uiboss = $UIBoss
+onready var boss = $YSort/Boss
+
 
 var earthAttack = false
 var swordAttack = false
@@ -32,14 +34,15 @@ func set_sword_attack():
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 
-func _process(delta):
+func _process(_delta):
 	if swordAttackTimer.time_left == 0 && crystals != 0 && swordAttack:
 		swordAttack = false
 		bossSword1.attack()
 		bossSword2.attack()
+		boss.attack()
 
 func _on_Area2D_body_entered(_body):
-	get_tree().change_scene("res://FinalRoom.tscn")
+	var _load = get_tree().change_scene("res://FinalRoom.tscn")
 
 
 func _on_Boss1_hide():
@@ -50,7 +53,7 @@ func _on_InitGameTimer_timeout():
 	fireAttackAnimation.play("FireWave")
 
 
-func _on_RightDestructableArea_area_entered(area):
+func _on_RightDestructableArea_area_entered(_area):
 	if earthAttack:
 		hiddenRoom1.visible = true
 		hiddenRoom2.visible = true
@@ -58,7 +61,7 @@ func _on_RightDestructableArea_area_entered(area):
 		rightDoorDestructable.queue_free()
 		rightDestructableArea.queue_free()
 
-func _on_Area2DCrystal_area_entered(area):
+func _on_Area2DCrystal_area_entered(_area):
 	crystals -= 1
 	print(crystals)
 	if crystals == 0:
