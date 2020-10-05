@@ -96,7 +96,7 @@ texture = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 483.0
 margin_bottom = 274.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,6 +126,7 @@ margin_top = 174.0
 margin_right = 308.0
 margin_bottom = 194.0
 text = "Press enter to continue"
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

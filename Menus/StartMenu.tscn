@@ -5,7 +5,7 @@
 [ext_resource path="res://Sounds/Music/MainTheme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Menus/UNHOLY_ECHO_1.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "fadeout"
 length = 3.0
 tracks/0/type = "value"
@@ -108,7 +108,7 @@ __meta__ = {
 
 [node name="Fadeout" type="AnimationPlayer" parent="."]
 autoplay = "fadeout"
-anims/fadeout = SubResource( 2 )
+anims/fadeout = SubResource( 1 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ToolButton" to="." method="_on_ToolButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ToolButton2" to="." method="_on_ToolButton2_pressed"]
 [connection signal="pressed" from="ToolButton3" to="." method="_on_ToolButton3_pressed"]
