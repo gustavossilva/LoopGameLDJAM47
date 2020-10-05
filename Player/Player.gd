@@ -124,3 +124,7 @@ func _on_Hurtbox_area_entered(area):
 		128: GameManager.set_eye_death()
 	if !GameManager.isDead:
 		player_die()
+
+func force_state_change(newState):
+	spinSound.stop()
+	state = newState

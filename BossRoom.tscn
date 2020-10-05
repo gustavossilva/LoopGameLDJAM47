@@ -1221,9 +1221,6 @@ limit_top = -320
 [node name="Boss" parent="YSort" instance=ExtResource( 17 )]
 position = Vector2( 239.413, -170.737 )
 
-[node name="AnimatedSprite" parent="YSort/Boss" index="1"]
-frame = 2
-
 [node name="Cryistals" type="YSort" parent="YSort"]
 modulate = Color( 1, 1, 1, 0 )
 

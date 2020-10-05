@@ -23,6 +23,7 @@ onready var earthquakeSfx = $Sfxs/Earthquake
 onready var wallBreakingSfx = $Sfxs/WallBreaking
 onready var crystalSfx = $Sfxs/Crystal
 onready var wallDestroyParticle = $WallDestroyParticle
+onready var player = $YSort/Player
 
 var earthAttack = false
 var swordAttack = false
@@ -79,6 +80,7 @@ func _on_Area2DCrystal_area_entered(_area):
 		bossSword2.queue_free()
 		blockedFloor.queue_free()
 		bossAreaBlock.queue_free()
+		player.force_state_change(player.MOVE)
 		uiboss.tired()
 		#uiboss.crystal_break()
 
@@ -90,6 +92,7 @@ func _on_Hurtbox_area_entered(_area):
 
 
 func _on_BossDeath_hide():
+	player.force_state_change(player.MOVE)
 	boss.die()
 
 func on_fire():
