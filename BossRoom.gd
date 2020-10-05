@@ -17,6 +17,11 @@ onready var blockedFloor = $Background/BlockedFloor
 onready var bossAreaBlock = $BossAreaBlock
 onready var doorOpen = $DoorOpen
 onready var doorCollision = $DoorOpen/Area2D/CollisionShape2D
+onready var fireSfx = $Sfxs/Fire
+onready var sismicSfx = $Sfxs/Sismic
+onready var earthquakeSfx = $Sfxs/Earthquake
+onready var wallBreakingSfx = $Sfxs/WallBreaking
+onready var crystalSfx = $Sfxs/Crystal
 
 var earthAttack = false
 var swordAttack = false
@@ -58,6 +63,7 @@ func _on_InitGameTimer_timeout():
 
 func _on_RightDestructableArea_area_entered(_area):
 	if earthAttack:
+		wallBreakingSfx.play()
 		hiddenRoom1.visible = true
 		hiddenRoom2.visible = true
 		brokenWall.visible = false
@@ -65,8 +71,8 @@ func _on_RightDestructableArea_area_entered(_area):
 		rightDestructableArea.queue_free()
 
 func _on_Area2DCrystal_area_entered(_area):
+	crystalSfx.play()
 	crystals -= 1
-	print(crystals)
 	if crystals == 0:
 		bossSword1.queue_free()
 		bossSword2.queue_free()
@@ -76,7 +82,7 @@ func _on_Area2DCrystal_area_entered(_area):
 		#uiboss.crystal_break()
 
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
 	doorCollision.set_deferred("disabled", false)
 	doorOpen.visible = true
 	uiboss.death()
@@ -84,3 +90,19 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_BossDeath_hide():
 	boss.die()
+
+func on_fire():
+	fireSfx.play()
+	
+func stop_fire():
+	fireSfx.stop()
+
+func on_sismic():
+	sismicSfx.play()
+	
+func on_earthquake():
+	earthquakeSfx.play()
+	
+func stop_sismic():
+	earthquakeSfx.stop()
+	sismicSfx.stop()

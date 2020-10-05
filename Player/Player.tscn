@@ -9,7 +9,7 @@
 [ext_resource path="res://Player/SFX/spin.wav" type="AudioStream" id=7]
 [ext_resource path="res://CollisionBoxes/Hurtbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/Camera2D.gd" type="Script" id=9]
-[ext_resource path="res://Player/SFX/Corte Errado.wav" type="AudioStream" id=10]
+[ext_resource path="res://Player/SFX/machadomiss1.wav" type="AudioStream" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -4.00739, -0.87471, 0.235229, -6.00123, 6.776, -2.28891, 1.47269, -1.58182 )
@@ -705,7 +705,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.520279, -9.2973 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 32
+frame = 6
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 light_mask = 2
@@ -784,7 +784,7 @@ volume_db = -12.117
 
 [node name="AxeHitboxPosition" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
-rotation = 3.14159
+rotation = 1.5708
 
 [node name="Hitbox" parent="AxeHitboxPosition" instance=ExtResource( 6 )]
 collision_mask = 512

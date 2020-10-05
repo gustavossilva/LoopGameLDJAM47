@@ -12,12 +12,10 @@ func _process(_delta):
 		emit_signal("open_book")
 
 func _on_Area2D_body_entered(_body):
-	print("oi")
 	bookAnimationPlayer.play("Animate")
 	isColliding = true
 
 
 func _on_Area2D_body_exited(_body):
-	print("tchau")
 	bookAnimationPlayer.play("Idle")
 	isColliding = false

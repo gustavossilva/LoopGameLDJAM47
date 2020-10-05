@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Terremoto.ogg-620c547dc95540eea892f6118386d571.oggstr"
+
+[deps]
+
+source_file="res://Enemy/Sfx/Terremoto.ogg"
+dest_files=[ "res://.import/Terremoto.ogg-620c547dc95540eea892f6118386d571.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

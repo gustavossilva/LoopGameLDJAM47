@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rock-crack.wav-59fbc1a12f46924383db298c49dc59e6.sample"
+
+[deps]
+
+source_file="res://Enemy/Sfx/rock-crack.wav"
+dest_files=[ "res://.import/rock-crack.wav-59fbc1a12f46924383db298c49dc59e6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -16,5 +16,6 @@ func _on_AnimatedSprite_animation_finished():
 
 
 func die():
+	animatedSprite.position.y = -100
 	animatedSprite.play("Die")
 	collision.set_deferred("disabled", true)
