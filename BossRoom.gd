@@ -13,6 +13,7 @@ onready var bossSword2 = $BossSword2
 onready var swordAttackTimer = $SwordAttackTimer
 onready var uiboss = $UIBoss
 onready var boss = $YSort/Boss
+onready var bossColission = $YSort/Boss/AnimatedSprite/Hurtbox/HurtboxCollision
 onready var blockedFloor = $Background/BlockedFloor
 onready var bossAreaBlock = $BossAreaBlock
 onready var doorOpen = $DoorOpen
@@ -82,6 +83,7 @@ func _on_Area2DCrystal_area_entered(_area):
 		bossAreaBlock.queue_free()
 		player.force_state_change(player.MOVE)
 		uiboss.tired()
+		bossColission.set_deferred("disabled", false)
 		#uiboss.crystal_break()
 
 

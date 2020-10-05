@@ -428,6 +428,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 18 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AxeHitboxPosition/Hitbox/HitBoxCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.1
@@ -443,6 +455,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AxeHitboxPosition/Hitbox/HitBoxCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -471,6 +495,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AxeHitboxPosition/Hitbox/HitBoxCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -563,6 +599,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AxeHitboxPosition/Hitbox/HitBoxCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=17]
@@ -785,7 +833,7 @@ volume_db = -12.117
 
 [node name="AxeHitboxPosition" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
-rotation = -1.5708
+rotation = 1.5708
 
 [node name="Hitbox" parent="AxeHitboxPosition" instance=ExtResource( 6 )]
 collision_mask = 512

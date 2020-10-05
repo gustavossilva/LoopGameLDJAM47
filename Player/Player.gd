@@ -70,7 +70,7 @@ func move(delta):
 	if Input.is_action_pressed("attack") && state != CHARGE_ATTACK && state != ATTACK:
 		timePressingAttack += delta
 		var moduleAlpha = int(timePressingAttack * 100)
-		if timePressingAttack >= 1.5 && !chargedIsPlaying:
+		if timePressingAttack >= 1.25 && !chargedIsPlaying:
 			chargedIsPlaying = true
 			chargedSound.play()
 		lightSprite.modulate.a8 = clamp(moduleAlpha, 0, 150)

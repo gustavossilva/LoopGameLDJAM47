@@ -39,6 +39,7 @@ func resetToGameLoop():
 	loopTimes += 1
 	isDead = false
 	#insert reset code
+	isInteracting = true
 	var _load = get_tree().change_scene("res://FirstRoom.tscn")
 	
 func reset_game():
