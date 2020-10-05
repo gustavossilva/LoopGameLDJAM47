@@ -7,6 +7,7 @@ var canInteract = false
 
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
+	GameManager.isInteracting = false
 
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") && canInteract && !GameManager.isInteracting:

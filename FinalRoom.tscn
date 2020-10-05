@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Props/tocha_frente.png" type="Texture" id=1]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Dialogs/AdventurerMirror.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Dialogs/AdventurerMirror.gd" type="Script" id=8]
 [ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=9]
+[ext_resource path="res://Sounds/Music/fogopingoOGG.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.548148, 1 )
@@ -40,10 +41,9 @@ scale = 3.0
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
-[sub_resource type="Animation" id=6]
-resource_name = "Animate"
+[sub_resource type="Animation" id=7]
 length = 5.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -72,8 +72,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Idle"
+[sub_resource type="Animation" id=8]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -88,8 +87,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Fadeout"
+[sub_resource type="Animation" id=9]
 length = 10.0
 step = 0.2
 tracks/0/type = "value"
@@ -165,11 +163,8 @@ collision_layer = 2
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 239, 218 )
 
-[node name="Sprite" parent="Player" index="0"]
-frame = 36
-
 [node name="AnimationTree" parent="Player" index="4"]
-parameters/playback = SubResource( 9 )
+parameters/playback = SubResource( 6 )
 
 [node name="Camera2D" parent="Player" index="5"]
 limit_left = 0
@@ -263,12 +258,17 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Animate = SubResource( 6 )
-anims/Idle = SubResource( 7 )
+anims/Animate = SubResource( 7 )
+anims/Idle = SubResource( 8 )
 
 [node name="CreditsAnimation" type="AnimationPlayer" parent="."]
 autoplay = "Fadeout"
-anims/Fadeout = SubResource( 8 )
+anims/Fadeout = SubResource( 9 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+autoplay = true
 [connection signal="body_entered" from="Prop/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Prop/Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="hide" from="CanvasLayer/AdventurerMirror" to="." method="_on_AdventurerMirror_hide"]

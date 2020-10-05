@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://FirstRoom.gd" type="Script" id=1]
 [ext_resource path="res://World/DoorOpen.tscn" type="PackedScene" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Torch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sounds/Music/FirstRoomFixFixOGG.ogg" type="AudioStream" id=9]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Fadeout"
 length = 3.0
 tracks/0/type = "value"
@@ -25,7 +26,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 145 )
 
 [node name="FirstRoom" type="Node2D"]
@@ -93,20 +94,25 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ColorRect"]
 autoplay = "Fadeout"
-anims/Fadeout = SubResource( 2 )
+anims/Fadeout = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 160, 146 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 160, 146 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2( 190, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+autoplay = true
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="open_book" from="YSort/Book" to="UI" method="_on_Book_open_book"]
 
