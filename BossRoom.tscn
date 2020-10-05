@@ -92,6 +92,54 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("BossCrystal4/StaticBody2D/CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BossCrystal/StaticBody2D/CollisionPolygon2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BossCrystal2/StaticBody2D/CollisionPolygon2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BossCrystal3/StaticBody2D/CollisionPolygon2D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 209, 17 )
@@ -1171,37 +1219,25 @@ parameters/playback = SubResource( 1 )
 limit_top = -320
 
 [node name="Boss" parent="YSort" instance=ExtResource( 17 )]
-position = Vector2( 240.08, -185.42 )
+position = Vector2( 239.413, -170.737 )
 
 [node name="AnimatedSprite" parent="YSort/Boss" index="1"]
-frame = 0
+frame = 2
 
-[node name="Cryistals" type="Node2D" parent="YSort"]
+[node name="Cryistals" type="YSort" parent="YSort"]
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="BossCrystal" parent="YSort/Cryistals" instance=ExtResource( 16 )]
 position = Vector2( 164, -3 )
 
-[node name="CrystalCollision" parent="YSort/Cryistals/BossCrystal/Area2DCrystal" index="0"]
-disabled = true
-
 [node name="BossCrystal2" parent="YSort/Cryistals" instance=ExtResource( 16 )]
 position = Vector2( 217, 24 )
-
-[node name="CrystalCollision" parent="YSort/Cryistals/BossCrystal2/Area2DCrystal" index="0"]
-disabled = true
 
 [node name="BossCrystal3" parent="YSort/Cryistals" instance=ExtResource( 16 )]
 position = Vector2( 268, 24 )
 
-[node name="CrystalCollision" parent="YSort/Cryistals/BossCrystal3/Area2DCrystal" index="0"]
-disabled = true
-
 [node name="BossCrystal4" parent="YSort/Cryistals" instance=ExtResource( 16 )]
 position = Vector2( 314, -5 )
-
-[node name="CrystalCollision" parent="YSort/Cryistals/BossCrystal4/Area2DCrystal" index="0"]
-disabled = true
 
 [node name="CrystalAnimation" type="AnimationPlayer" parent="YSort/Cryistals"]
 anims/Spawn = SubResource( 2 )
@@ -2647,14 +2683,10 @@ stream = ExtResource( 24 )
 volume_db = -7.0
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="YSort/Boss/AnimatedSprite/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="YSort/Cryistals/BossCrystal" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="YSort/Cryistals/BossCrystal2" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="YSort/Cryistals/BossCrystal3" method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="YSort/Cryistals/BossCrystal4" method="_on_Area2DCrystal_area_entered"]
 [connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]
 [connection signal="area_entered" from="RightDestructableArea" to="." method="_on_RightDestructableArea_area_entered"]
 [connection signal="hide" from="UIBoss/Boss1" to="." method="_on_Boss1_hide"]
