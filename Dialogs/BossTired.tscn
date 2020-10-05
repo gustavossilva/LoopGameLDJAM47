@@ -47,5 +47,6 @@ text = "So that’s how it ends. There’s no escape... For neither of us."
 percent_visible = 0.0
 
 [node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/Write = SubResource( 2 )

@@ -44,10 +44,12 @@ texture = ExtResource( 2 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
 text = "Ugh... There’s no escape from something like this."
+percent_visible = 0.0
 
 [node name="SpeakerName" parent="Speaker" index="0"]
 text = "Adventurer"
 
 [node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/Write = SubResource( 2 )

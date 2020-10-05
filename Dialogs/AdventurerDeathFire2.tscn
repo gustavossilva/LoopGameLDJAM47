@@ -44,6 +44,7 @@ texture = ExtResource( 2 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
 text = "AAAAAAH!! That weird fire dream, again... No, it can’t be. It felt too real."
+percent_visible = 0.0
 
 [node name="SpeakerName" parent="Speaker" index="0"]
 text = "Adventurer"

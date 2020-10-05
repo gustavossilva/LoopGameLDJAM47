@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Dialogs/BossDeath.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dialogs/BossEarthshake2.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Dialogs/BossEye2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UI/UIBoss.gd" type="Script" id=13]
 [ext_resource path="res://Dialogs/Boss1.gd" type="Script" id=14]
+[ext_resource path="res://Dialogs/BossDeath.gd" type="Script" id=15]
 
 [node name="UIBoss" type="CanvasLayer"]
 script = ExtResource( 13 )
@@ -27,6 +28,7 @@ visible = false
 
 [node name="BossDeath" parent="." instance=ExtResource( 1 )]
 visible = false
+script = ExtResource( 15 )
 
 [node name="BossEarthshake1" parent="." instance=ExtResource( 7 )]
 visible = false

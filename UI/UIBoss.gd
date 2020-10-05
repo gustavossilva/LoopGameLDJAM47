@@ -3,6 +3,8 @@ extends CanvasLayer
 
 onready var boss1 = $Boss1
 onready var bossCrystalBreak = $BossCrystalBreak
+onready var bossTired = $BossTired
+onready var bossDeath = $BossDeath
 
 
 func _on_Timer_timeout():
@@ -10,3 +12,9 @@ func _on_Timer_timeout():
 
 func crystal_break():
 	bossCrystalBreak.show_dialog()
+	
+func tired():
+	bossTired.show_dialog()
+
+func death():
+	bossDeath.show_dialog()

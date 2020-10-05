@@ -16,5 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_Area2DCrystal_area_entered(area):
+func _on_Area2DCrystal_area_entered(_area):
 	self.queue_free()

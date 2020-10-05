@@ -13,7 +13,10 @@ onready var bossSword2 = $BossSword2
 onready var swordAttackTimer = $SwordAttackTimer
 onready var uiboss = $UIBoss
 onready var boss = $YSort/Boss
-
+onready var blockedFloor = $Background/BlockedFloor
+onready var bossAreaBlock = $BossAreaBlock
+onready var doorOpen = $DoorOpen
+onready var doorCollision = $DoorOpen/Area2D/CollisionShape2D
 
 var earthAttack = false
 var swordAttack = false
@@ -67,4 +70,17 @@ func _on_Area2DCrystal_area_entered(_area):
 	if crystals == 0:
 		bossSword1.queue_free()
 		bossSword2.queue_free()
-		uiboss.crystal_break()
+		blockedFloor.queue_free()
+		bossAreaBlock.queue_free()
+		uiboss.tired()
+		#uiboss.crystal_break()
+
+
+func _on_Hurtbox_area_entered(area):
+	doorCollision.set_deferred("disabled", false)
+	doorOpen.visible = true
+	uiboss.death()
+
+
+func _on_BossDeath_hide():
+	boss.die()

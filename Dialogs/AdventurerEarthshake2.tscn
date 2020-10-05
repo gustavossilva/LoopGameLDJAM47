@@ -44,6 +44,7 @@ texture = ExtResource( 2 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
 text = "AGH!! Is this some kind of purgatory? What is happening?!"
+percent_visible = 0.0
 
 [node name="AnimationPlayer" parent="." index="6"]
 autoplay = "Idle"

@@ -5,4 +5,4 @@ func _ready():
 
 
 func _on_Area2D_body_entered(_body):
-	get_tree().change_scene("res://BossRoom.tscn")
+	var _load = get_tree().change_scene("res://BossRoom.tscn")

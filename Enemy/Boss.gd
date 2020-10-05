@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var animatedSprite = $AnimatedSprite
+onready var collision = $AnimatedSprite/Hurtbox/HurtboxCollision
 
 func attack():
 	animatedSprite.play("Attack")
@@ -16,3 +17,4 @@ func _on_AnimatedSprite_animation_finished():
 
 func die():
 	animatedSprite.play("Die")
+	collision.set_deferred("disabled", true)
