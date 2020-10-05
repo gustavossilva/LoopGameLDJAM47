@@ -96,7 +96,7 @@ margin_left = 16.0
 margin_top = 128.0
 margin_right = 93.0
 margin_bottom = 142.0
-text = "Z to next dialog"
+text = "K to next dialog"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +106,7 @@ margin_left = 16.0
 margin_top = 144.0
 margin_right = 93.0
 margin_bottom = 158.0
-text = "X to speedup text"
+text = "L to speedup text"
 __meta__ = {
 "_edit_use_anchors_": false
 }

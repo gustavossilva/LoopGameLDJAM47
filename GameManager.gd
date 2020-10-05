@@ -41,3 +41,12 @@ func resetToGameLoop():
 	#insert reset code
 	var _load = get_tree().change_scene("res://FirstRoom.tscn")
 	
+func reset_game():
+	isInteracting = true
+	isDead = false
+	loopTimes = 0
+	actualDeathType = deathTypes.NONE
+	firedeath = 0
+	sworddeath = 0
+	earthdeath = 0
+	eyedeath = 0

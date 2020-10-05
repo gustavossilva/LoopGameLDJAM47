@@ -936,7 +936,7 @@ tracks/26/loop_wrap = true
 tracks/26/imported = false
 tracks/26/enabled = true
 tracks/26/keys = {
-"times": PoolRealArray( 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 7.9, 8.5, 9, 9.6 ),
+"times": PoolRealArray( 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -1220,9 +1220,6 @@ limit_top = -320
 
 [node name="Boss" parent="YSort" instance=ExtResource( 17 )]
 position = Vector2( 239.413, -170.737 )
-
-[node name="AnimatedSprite" parent="YSort/Boss" index="1"]
-frame = 2
 
 [node name="Cryistals" type="YSort" parent="YSort"]
 modulate = Color( 1, 1, 1, 0 )
@@ -2588,7 +2585,7 @@ disabled = true
 anims/Rotate = SubResource( 11 )
 
 [node name="InitGameTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 5.0
 one_shot = true
 
 [node name="BossAreaBlock" type="StaticBody2D" parent="."]
