@@ -17,7 +17,8 @@ _global_script_class_icons={
 
 config/name="Unholy Echo"
 run/main_scene="res://Menus/StartMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Icone.png"
+config/windows_native_icon="res://newicon.ico"
 
 [autoload]
 
