@@ -13,6 +13,8 @@ func _process(_delta):
 	if Input.is_action_just_pressed("interact") && canInteract && !GameManager.isInteracting:
 		GameManager.isInteracting = true
 		mirrorDialog.show_dialog()
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = false
 
 func _on_Area2D_body_entered(_body):
 	canInteract = true

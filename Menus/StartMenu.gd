@@ -16,3 +16,7 @@ func _on_ToolButton_pressed():
 
 func _on_ToolButton2_pressed():
 	get_tree().quit()
+
+
+func _on_ToolButton3_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen

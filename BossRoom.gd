@@ -51,6 +51,8 @@ func _process(_delta):
 		bossSword1.attack()
 		bossSword2.attack()
 		boss.attack()
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = false
 
 func _on_Area2D_body_entered(_body):
 	var _load = get_tree().change_scene("res://FinalRoom.tscn")

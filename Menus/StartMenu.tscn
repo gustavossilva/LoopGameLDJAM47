@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=2]
 [ext_resource path="res://Sounds/Music/MainTheme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Menus/UNHOLY_ECHO_1.png" type="Texture" id=4]
-
-[sub_resource type="Theme" id=1]
 
 [sub_resource type="Animation" id=2]
 resource_name = "fadeout"
@@ -55,6 +53,7 @@ anchor_bottom = 1.0
 margin_top = 144.0
 margin_bottom = 5.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -76,26 +75,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
-margin_top = 28.0
-margin_right = 72.0
-margin_bottom = 48.0
-theme = SubResource( 1 )
-text = "Start game"
-
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
-margin_top = 52.0
-margin_right = 72.0
-margin_bottom = 72.0
-text = "Quit"
-
 [node name="ToolButton2" type="ToolButton" parent="CenterContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 72.0
 margin_bottom = 48.0
 text = "Quit"
+
+[node name="ToolButton3" type="ToolButton" parent="."]
+margin_left = 400.0
+margin_top = 244.0
+margin_right = 472.0
+margin_bottom = 264.0
+text = "Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -108,6 +102,7 @@ margin_bottom = 272.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -115,6 +110,5 @@ __meta__ = {
 autoplay = "fadeout"
 anims/fadeout = SubResource( 2 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ToolButton" to="." method="_on_ToolButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ToolButton2" to="." method="_on_ToolButton2_pressed"]
+[connection signal="pressed" from="ToolButton3" to="." method="_on_ToolButton3_pressed"]
