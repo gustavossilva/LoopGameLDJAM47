@@ -2689,7 +2689,6 @@ volume_db = -7.0
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )
 volume_db = -15.0
-autoplay = true
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="YSort/Boss/AnimatedSprite/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]

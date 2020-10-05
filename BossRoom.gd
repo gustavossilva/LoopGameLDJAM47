@@ -25,6 +25,7 @@ onready var wallBreakingSfx = $Sfxs/WallBreaking
 onready var crystalSfx = $Sfxs/Crystal
 onready var wallDestroyParticle = $WallDestroyParticle
 onready var player = $YSort/Player
+onready var music = $Music
 
 var earthAttack = false
 var swordAttack = false
@@ -59,6 +60,7 @@ func _on_Area2D_body_entered(_body):
 
 
 func _on_Boss1_hide():
+	music.play()
 	initGameTimer.start()
 
 
