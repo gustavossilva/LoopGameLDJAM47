@@ -16,6 +16,7 @@ var showDialog = true
 
 func _process(_delta):
 	if GameManager.loopTimes == 0 and showDialog and timer.time_left == 0:
+		GameManager.isInteracting = false
 		adventurerFirst.show_dialog()
 		showDialog = false
 	if GameManager.loopTimes != 0 and showDialog and timer.time_left == 0:

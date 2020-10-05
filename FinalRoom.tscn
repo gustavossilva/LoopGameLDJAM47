@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Props/tocha_frente.png" type="Texture" id=1]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Dialogs/AdventurerMirror.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Dialogs/AdventurerMirror.gd" type="Script" id=8]
+[ext_resource path="res://UI/DefaultTheme.tres" type="Theme" id=9]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.548148, 1 )
@@ -38,6 +39,8 @@ angle = 45.0
 scale = 3.0
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Animate"
@@ -83,6 +86,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Fadeout"
+length = 10.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="FinalRoom" type="Node2D"]
@@ -145,7 +165,88 @@ collision_layer = 2
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 239, 218 )
 
+[node name="Sprite" parent="Player" index="0"]
+frame = 36
+
+[node name="AnimationTree" parent="Player" index="4"]
+parameters/playback = SubResource( 9 )
+
+[node name="Camera2D" parent="Player" index="5"]
+limit_left = 0
+limit_top = 0
+limit_right = 480
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+margin_left = 7.0
+margin_top = 50.0
+margin_right = 105.0
+margin_bottom = 100.0
+text = "Programmers:
+Guilherme Souza
+Gustavo Silva"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+margin_left = 370.0
+margin_top = 50.0
+margin_right = 474.0
+margin_bottom = 100.0
+text = "Artist:
+Victor Lopes
+William Carvalho"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control"]
+margin_left = 370.0
+margin_top = 113.0
+margin_right = 474.0
+margin_bottom = 163.0
+text = "Composer:
+Lucas Oliveira"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control"]
+margin_left = 1.0
+margin_top = 113.0
+margin_right = 105.0
+margin_bottom = 163.0
+text = "Game designer:
+Vinicius Rocha"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control"]
+margin_top = 153.0
+margin_right = 104.0
+margin_bottom = 203.0
+text = "Designer:
+Matheus Miyano"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AdventurerMirror" parent="CanvasLayer" instance=ExtResource( 7 )]
 visible = false
@@ -164,6 +265,10 @@ __meta__ = {
 autoplay = "Idle"
 anims/Animate = SubResource( 6 )
 anims/Idle = SubResource( 7 )
+
+[node name="CreditsAnimation" type="AnimationPlayer" parent="."]
+autoplay = "Fadeout"
+anims/Fadeout = SubResource( 8 )
 [connection signal="body_entered" from="Prop/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Prop/Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="hide" from="CanvasLayer/AdventurerMirror" to="." method="_on_AdventurerMirror_hide"]
@@ -173,3 +278,5 @@ anims/Idle = SubResource( 7 )
 [editable path="Torch2"]
 
 [editable path="Prop"]
+
+[editable path="Player"]

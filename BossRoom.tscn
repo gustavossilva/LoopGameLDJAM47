@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BossRoom.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://UI/UIBoss.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Props/Sofa.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Torch.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Enemy/earth.png" type="Texture" id=12]
+[ext_resource path="res://Enemy/Spikes.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Enemy/FireCollisionShape2.tres" type="Shape2D" id=13]
 [ext_resource path="res://Enemy/FireCollisionShape.tres" type="Shape2D" id=14]
 [ext_resource path="res://EarthAttack.gd" type="Script" id=15]
@@ -24,6 +24,8 @@
 [ext_resource path="res://Enemy/Sfx/Terremoto.ogg" type="AudioStream" id=22]
 [ext_resource path="res://Enemy/Sfx/quebramuro.wav" type="AudioStream" id=23]
 [ext_resource path="res://Enemy/Sfx/cristalcorrigidofinal3.wav" type="AudioStream" id=24]
+[ext_resource path="res://World/WallDestroyParticle.tscn" type="PackedScene" id=25]
+[ext_resource path="res://World/TremorParticles.tscn" type="PackedScene" id=26]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -497,7 +499,7 @@ tracks/31/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 0.608116, 336.752 )
+extents = Vector2( 22.6186, 336.752 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 33.1561, 163.605 )
@@ -947,6 +949,18 @@ tracks/26/keys = {
 "method": "stop_sismic"
 } ]
 }
+tracks/27/type = "value"
+tracks/27/path = NodePath("../../TremorParticles:emitting")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 3.2
@@ -1093,6 +1107,11 @@ script = ExtResource( 2 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.768627, 0.768627, 0.768627, 1 )
 
+[node name="WallDestroyParticle" parent="." instance=ExtResource( 25 )]
+position = Vector2( 458, 144 )
+z_index = 1
+z_as_relative = false
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="HiddenRoom2" parent="Background" instance=ExtResource( 1 )]
@@ -1123,6 +1142,12 @@ tile_data = PoolIntArray( -327675, 11, 0, -327674, 11, 0, -327673, 11, 0, -32767
 [node name="BlockedFloor" parent="Background" instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -327675, 12, 0, -327674, 12, 0, -327673, 12, 0, -327672, 12, 0, -327671, 12, 0 )
 
+[node name="TremorParticles" parent="." instance=ExtResource( 26 )]
+position = Vector2( 237, 84 )
+emitting = false
+amount = 1000
+lifetime = 0.5
+
 [node name="DoorClosed" type="Sprite" parent="."]
 position = Vector2( 240, -304 )
 texture = ExtResource( 19 )
@@ -1148,8 +1173,8 @@ limit_top = -320
 [node name="Boss" parent="YSort" instance=ExtResource( 17 )]
 position = Vector2( 240.08, -185.42 )
 
-[node name="AnimatedSprite" parent="YSort/Boss" index="0"]
-frame = 1
+[node name="AnimatedSprite" parent="YSort/Boss" index="1"]
+frame = 0
 
 [node name="Cryistals" type="Node2D" parent="YSort"]
 modulate = Color( 1, 1, 1, 0 )
@@ -1663,6 +1688,10 @@ position = Vector2( 432, -112 )
 [node name="Area2D" type="Area2D" parent="YSort/FireAttack/FirstWave9"]
 collision_layer = 4
 collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Wave9Shape" type="CollisionShape2D" parent="YSort/FireAttack/FirstWave9/Area2D"]
 position = Vector2( 240, -112 )
@@ -1888,41 +1917,34 @@ script = ExtResource( 15 )
 visible = false
 position = Vector2( 50, -97 )
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth1"]
+[node name="Spike" parent="YSort/EarthAttack/Earth1" instance=ExtResource( 12 )]
 position = Vector2( -4, -22 )
-texture = ExtResource( 12 )
 
 [node name="Earth2" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
 position = Vector2( 50, -97 )
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth2"]
+[node name="Spike" parent="YSort/EarthAttack/Earth2" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth2"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth2" instance=ExtResource( 12 )]
 position = Vector2( 30, -23 )
-texture = ExtResource( 12 )
 
 [node name="Earth3" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
 position = Vector2( 50, -51 )
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth3"]
+[node name="Spike" parent="YSort/EarthAttack/Earth3" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth3"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth3" instance=ExtResource( 12 )]
 position = Vector2( 20, -14 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth3"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth3" instance=ExtResource( 12 )]
 position = Vector2( 50, -43 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth3"]
-position = Vector2( 78, -72 )
-texture = ExtResource( 12 )
+[node name="Spike4" parent="YSort/EarthAttack/Earth3" instance=ExtResource( 12 )]
+position = Vector2( 78, -73 )
 
 [node name="Earth4" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -1931,29 +1953,23 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth4"]
+[node name="Spike" parent="YSort/EarthAttack/Earth4" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth4"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth4" instance=ExtResource( 12 )]
 position = Vector2( 20, -14 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth4"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth4" instance=ExtResource( 12 )]
 position = Vector2( 50, -43 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth4"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth4" instance=ExtResource( 12 )]
 position = Vector2( 78, -72 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth4"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth4" instance=ExtResource( 12 )]
 position = Vector2( 104, -98 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth4"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth4" instance=ExtResource( 12 )]
 position = Vector2( 128, -125 )
-texture = ExtResource( 12 )
 
 [node name="Earth5" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -1962,33 +1978,26 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( 20, -14 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( 50, -43 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( 78, -72 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( 104, -98 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( 128, -125 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth5"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth5" instance=ExtResource( 12 )]
 position = Vector2( 156, -154 )
-texture = ExtResource( 12 )
 
 [node name="Earth6" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -1997,41 +2006,32 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 20, -14 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 50, -43 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 78, -72 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 104, -98 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 128, -125 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 156, -154 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 185, -185 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth6"]
+[node name="Spike9" parent="YSort/EarthAttack/Earth6" instance=ExtResource( 12 )]
 position = Vector2( 212, -209 )
-texture = ExtResource( 12 )
 
 [node name="Earth7" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2040,49 +2040,38 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 24, -10 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 52, -41 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth7"]
-position = Vector2( 80, -70 )
-texture = ExtResource( 12 )
-
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 105, -96 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 130, -123 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 158, -152 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 187, -181 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth7"]
-position = Vector2( 212, -209 )
-texture = ExtResource( 12 )
-
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 240, -238 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth7"]
+[node name="Spike11" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
 position = Vector2( 267, -266 )
-texture = ExtResource( 12 )
+
+[node name="Spike9" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
+position = Vector2( 212, -209 )
+
+[node name="Spike4" parent="YSort/EarthAttack/Earth7" instance=ExtResource( 12 )]
+position = Vector2( 79, -71 )
 
 [node name="Earth8" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2091,53 +2080,41 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 24, -10 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 52, -41 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth8"]
-position = Vector2( 80, -70 )
-texture = ExtResource( 12 )
-
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth8"]
-position = Vector2( 105, -96 )
-texture = ExtResource( 12 )
-
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 130, -123 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 158, -152 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 187, -181 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike9" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 212, -209 )
-texture = ExtResource( 12 )
 
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 240, -238 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike11" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 267, -266 )
-texture = ExtResource( 12 )
 
-[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Earth8"]
+[node name="Spike12" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
 position = Vector2( 294, -293 )
-texture = ExtResource( 12 )
+
+[node name="Spike5" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
+position = Vector2( 105, -97 )
+
+[node name="Spike4" parent="YSort/EarthAttack/Earth8" instance=ExtResource( 12 )]
+position = Vector2( 80, -71 )
 
 [node name="Earth9" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2146,61 +2123,47 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 24, -10 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 52, -41 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 80, -70 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 105, -96 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 130, -123 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 158, -152 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 187, -181 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike9" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 212, -209 )
-texture = ExtResource( 12 )
 
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 240, -238 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike11" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 267, -266 )
-texture = ExtResource( 12 )
 
-[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike12" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 294, -293 )
-texture = ExtResource( 12 )
 
-[node name="Sprite13" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike13" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 319, -321 )
-texture = ExtResource( 12 )
 
-[node name="Sprite14" type="Sprite" parent="YSort/EarthAttack/Earth9"]
+[node name="Spike14" parent="YSort/EarthAttack/Earth9" instance=ExtResource( 12 )]
 position = Vector2( 346, -348 )
-texture = ExtResource( 12 )
 
 [node name="Earth10" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2209,65 +2172,50 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 24, -10 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 52, -41 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 80, -70 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 105, -96 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 130, -123 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 158, -152 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 187, -181 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike9" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 212, -209 )
-texture = ExtResource( 12 )
 
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 240, -238 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike11" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 267, -266 )
-texture = ExtResource( 12 )
 
-[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike12" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 294, -293 )
-texture = ExtResource( 12 )
 
-[node name="Sprite13" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike13" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 319, -321 )
-texture = ExtResource( 12 )
 
-[node name="Sprite14" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike14" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 346, -348 )
-texture = ExtResource( 12 )
 
-[node name="Sprite15" type="Sprite" parent="YSort/EarthAttack/Earth10"]
+[node name="Spike15" parent="YSort/EarthAttack/Earth10" instance=ExtResource( 12 )]
 position = Vector2( 374, -376 )
-texture = ExtResource( 12 )
 
 [node name="Earth11" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2276,57 +2224,44 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 20, -14 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 48, -42 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 77, -73 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth11"]
-position = Vector2( 103, -98 )
-texture = ExtResource( 12 )
+[node name="Spike5" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
+position = Vector2( 103, -97 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 128, -126 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 157, -154 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 185, -185 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth11"]
-position = Vector2( 211, -213 )
-texture = ExtResource( 12 )
-
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 240, -243 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike11" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 268, -271 )
-texture = ExtResource( 12 )
 
-[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike12" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 296, -302 )
-texture = ExtResource( 12 )
 
-[node name="Sprite13" type="Sprite" parent="YSort/EarthAttack/Earth11"]
+[node name="Spike13" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
 position = Vector2( 324, -331 )
-texture = ExtResource( 12 )
+
+[node name="Spike9" parent="YSort/EarthAttack/Earth11" instance=ExtResource( 12 )]
+position = Vector2( 211, -213 )
 
 [node name="Earth12" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2335,53 +2270,41 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( -4, 13 )
-texture = ExtResource( 12 )
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 20, -14 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 48, -42 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 77, -73 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 103, -98 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 128, -126 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 157, -154 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth12"]
-position = Vector2( 185, -185 )
-texture = ExtResource( 12 )
-
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth12"]
-position = Vector2( 211, -213 )
-texture = ExtResource( 12 )
-
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 240, -243 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike11" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 263, -271 )
-texture = ExtResource( 12 )
 
-[node name="Sprite12" type="Sprite" parent="YSort/EarthAttack/Earth12"]
+[node name="Spike12" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
 position = Vector2( 286, -293 )
-texture = ExtResource( 12 )
+
+[node name="Spike9" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
+position = Vector2( 211, -213 )
+
+[node name="Spike8" parent="YSort/EarthAttack/Earth12" instance=ExtResource( 12 )]
+position = Vector2( 185, -185 )
 
 [node name="Earth13" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2390,45 +2313,35 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite2" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 16, -6 )
-texture = ExtResource( 12 )
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 43, -36 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 73, -66 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 101, -93 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 128, -123 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 156, -151 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth13"]
-position = Vector2( 186, -184 )
-texture = ExtResource( 12 )
-
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 212, -210 )
-texture = ExtResource( 12 )
 
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike9" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 239, -242 )
-texture = ExtResource( 12 )
 
-[node name="Sprite11" type="Sprite" parent="YSort/EarthAttack/Earth13"]
+[node name="Spike10" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
 position = Vector2( 261, -267 )
-texture = ExtResource( 12 )
+
+[node name="Spike7" parent="YSort/EarthAttack/Earth13" instance=ExtResource( 12 )]
+position = Vector2( 186, -184 )
 
 [node name="Earth14" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2437,37 +2350,29 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 40, -30 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 69, -62 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 101, -93 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 128, -123 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 156, -151 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 186, -184 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 212, -210 )
-texture = ExtResource( 12 )
 
-[node name="Sprite10" type="Sprite" parent="YSort/EarthAttack/Earth14"]
+[node name="Spike8" parent="YSort/EarthAttack/Earth14" instance=ExtResource( 12 )]
 position = Vector2( 239, -242 )
-texture = ExtResource( 12 )
 
 [node name="Earth15" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2476,33 +2381,26 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 40, -30 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 66, -58 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 94, -88 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 122, -116 )
-texture = ExtResource( 12 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 150, -146 )
-texture = ExtResource( 12 )
 
-[node name="Sprite8" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike6" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 176, -174 )
-texture = ExtResource( 12 )
 
-[node name="Sprite9" type="Sprite" parent="YSort/EarthAttack/Earth15"]
+[node name="Spike7" parent="YSort/EarthAttack/Earth15" instance=ExtResource( 12 )]
 position = Vector2( 198, -196 )
-texture = ExtResource( 12 )
 
 [node name="Earth16" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2511,25 +2409,20 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth16"]
+[node name="Spike" parent="YSort/EarthAttack/Earth16" instance=ExtResource( 12 )]
 position = Vector2( 39, -24 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth16"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth16" instance=ExtResource( 12 )]
 position = Vector2( 66, -54 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth16"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth16" instance=ExtResource( 12 )]
 position = Vector2( 94, -88 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth16"]
-position = Vector2( 122, -116 )
-texture = ExtResource( 12 )
+[node name="Spike4" parent="YSort/EarthAttack/Earth16" instance=ExtResource( 12 )]
+position = Vector2( 122, -117 )
 
-[node name="Sprite7" type="Sprite" parent="YSort/EarthAttack/Earth16"]
+[node name="Spike5" parent="YSort/EarthAttack/Earth16" instance=ExtResource( 12 )]
 position = Vector2( 150, -146 )
-texture = ExtResource( 12 )
 
 [node name="Earth17" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2538,21 +2431,17 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth17"]
+[node name="Spike" parent="YSort/EarthAttack/Earth17" instance=ExtResource( 12 )]
 position = Vector2( 36, -25 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth17"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth17" instance=ExtResource( 12 )]
 position = Vector2( 61, -52 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth17"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth17" instance=ExtResource( 12 )]
 position = Vector2( 87, -79 )
-texture = ExtResource( 12 )
 
-[node name="Sprite6" type="Sprite" parent="YSort/EarthAttack/Earth17"]
+[node name="Spike4" parent="YSort/EarthAttack/Earth17" instance=ExtResource( 12 )]
 position = Vector2( 111, -107 )
-texture = ExtResource( 12 )
 
 [node name="Earth18" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2561,17 +2450,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite3" type="Sprite" parent="YSort/EarthAttack/Earth18"]
+[node name="Spike" parent="YSort/EarthAttack/Earth18" instance=ExtResource( 12 )]
 position = Vector2( 40, -29 )
-texture = ExtResource( 12 )
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth18"]
+[node name="Spike2" parent="YSort/EarthAttack/Earth18" instance=ExtResource( 12 )]
 position = Vector2( 61, -48 )
-texture = ExtResource( 12 )
 
-[node name="Sprite5" type="Sprite" parent="YSort/EarthAttack/Earth18"]
+[node name="Spike3" parent="YSort/EarthAttack/Earth18" instance=ExtResource( 12 )]
 position = Vector2( 82, -69 )
-texture = ExtResource( 12 )
 
 [node name="Earth19" type="Node2D" parent="YSort/EarthAttack"]
 visible = false
@@ -2580,9 +2466,8 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sprite4" type="Sprite" parent="YSort/EarthAttack/Earth19"]
+[node name="Spike" parent="YSort/EarthAttack/Earth19" instance=ExtResource( 12 )]
 position = Vector2( 62, -44 )
-texture = ExtResource( 12 )
 
 [node name="Area2D" type="Area2D" parent="YSort/EarthAttack"]
 collision_layer = 64
@@ -2603,10 +2488,17 @@ position = Vector2( 336, 208 )
 rotation = 0.610865
 shape = SubResource( 7 )
 disabled = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Area2D3" type="Area2D" parent="YSort/EarthAttack"]
 collision_layer = 64
 collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="SmallShape" type="CollisionShape2D" parent="YSort/EarthAttack/Area2D3"]
 position = Vector2( 388, 287 )
@@ -2755,12 +2647,12 @@ stream = ExtResource( 24 )
 volume_db = -7.0
 [connection signal="body_entered" from="DoorOpen/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="area_entered" from="YSort/Boss/AnimatedSprite/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="YSort/Cryistals/BossCrystal" method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="YSort/Cryistals/BossCrystal2" method="_on_Area2DCrystal_area_entered"]
-[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal2/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="YSort/Cryistals/BossCrystal3" method="_on_Area2DCrystal_area_entered"]
+[connection signal="area_entered" from="YSort/Cryistals/BossCrystal3/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="." method="_on_Area2DCrystal_area_entered"]
 [connection signal="area_entered" from="YSort/Cryistals/BossCrystal4/Area2DCrystal" to="YSort/Cryistals/BossCrystal4" method="_on_Area2DCrystal_area_entered"]
 [connection signal="timeout" from="InitGameTimer" to="." method="_on_InitGameTimer_timeout"]

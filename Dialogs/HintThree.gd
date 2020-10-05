@@ -13,6 +13,13 @@ func _process(_delta):
 
 
 func _on_HintTwo_hide():
+	pass
+	#self.visible = true
+	#set_process(true)
+	#animationPlayer.play("Write")
+
+
+func _on_HintOne_hide():
 	self.visible = true
 	set_process(true)
 	animationPlayer.play("Write")

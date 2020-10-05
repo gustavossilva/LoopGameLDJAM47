@@ -4,7 +4,7 @@ enum deathTypes {
 	NONE, FIRE, SWORD, EARTH,  EYE
 }
 
-var isInteracting = false setget set_interacting
+var isInteracting = true setget set_interacting
 var isDead = false setget set_isDead
 var loopTimes = 0
 var actualDeathType = deathTypes.NONE

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Props/Prop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Props/Estatua_com_escudo.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/Sombra.png" type="Texture" id=3]
 
 [node name="ShieldStatue" instance=ExtResource( 1 )]
 collision_layer = 2
@@ -11,6 +12,13 @@ collision_mask = 0
 position = Vector2( 0, -29 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
+
+[node name="Sombra" type="Sprite" parent="Sprite" index="0"]
+modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+position = Vector2( 0, 16.5 )
+scale = Vector2( 0.8125, 0.5 )
+texture = ExtResource( 3 )
 
 [node name="Collision" parent="." index="1"]
 position = Vector2( 0, -21 )

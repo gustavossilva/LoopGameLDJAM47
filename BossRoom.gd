@@ -22,6 +22,7 @@ onready var sismicSfx = $Sfxs/Sismic
 onready var earthquakeSfx = $Sfxs/Earthquake
 onready var wallBreakingSfx = $Sfxs/WallBreaking
 onready var crystalSfx = $Sfxs/Crystal
+onready var wallDestroyParticle = $WallDestroyParticle
 
 var earthAttack = false
 var swordAttack = false
@@ -63,6 +64,7 @@ func _on_InitGameTimer_timeout():
 
 func _on_RightDestructableArea_area_entered(_area):
 	if earthAttack:
+		wallDestroyParticle.emitting = true
 		wallBreakingSfx.play()
 		hiddenRoom1.visible = true
 		hiddenRoom2.visible = true
