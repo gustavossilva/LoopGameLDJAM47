@@ -20,6 +20,10 @@ run/main_scene="res://Menus/StartMenu.tscn"
 config/icon="res://Icone.png"
 config/windows_native_icon="res://newicon.ico"
 
+[audio]
+
+driver="RtAudio-DirectSound"
+
 [autoload]
 
 Utils="*res://Utils.gd"
