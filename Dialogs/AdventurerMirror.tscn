@@ -44,10 +44,12 @@ texture = ExtResource( 2 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
 text = "Now I can remember everything. There’s no way to bend my fate. Time is an enemy I can’t fight. I shall stay and wait, for a condemned soul, there’s no home to return. Not until the next one arrives."
+percent_visible = 0.0
 
 [node name="SpeakerName" parent="Speaker" index="0"]
 text = "Adventurer"
 
 [node name="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/Write = SubResource( 2 )

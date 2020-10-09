@@ -48,7 +48,7 @@ texture = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
-text = "It is during our darkest moments that we must focus to see the light."
+text = "With focus, even the hardest diamond shall get shattered."
 percent_visible = 0.0
 
 [node name="SpeakerName" parent="Speaker" index="0"]

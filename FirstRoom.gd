@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = false
 

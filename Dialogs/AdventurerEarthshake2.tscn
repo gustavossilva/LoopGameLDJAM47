@@ -46,6 +46,9 @@ texture = ExtResource( 2 )
 text = "AGH!! Is this some kind of purgatory? What is happening?!"
 percent_visible = 0.0
 
+[node name="SpeakerName" parent="Speaker" index="0"]
+text = "Adventurer"
+
 [node name="AnimationPlayer" parent="." index="6"]
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )

@@ -81,6 +81,20 @@ position = Vector2( 256, 154 )
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 
+[node name="Label3" parent="UI/Control" index="2"]
+text = "Press or hold space
+to attack"
+
+[node name="Label4" parent="UI/Control" index="3"]
+margin_top = 144.0
+margin_right = 120.0
+margin_bottom = 164.0
+
+[node name="Label5" parent="UI/Control" index="4"]
+margin_top = 160.0
+margin_right = 126.0
+margin_bottom = 180.0
+
 [node name="Timer" parent="UI" index="14"]
 wait_time = 3.25
 

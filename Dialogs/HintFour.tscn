@@ -48,7 +48,7 @@ texture = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
-text = "Only a true best friend can protect you from your immortal enemies"
+text = "A true guardian always helps those who approaches, regardless of the danger."
 percent_visible = 0.0
 
 [node name="SpeakerName" parent="Speaker" index="0"]

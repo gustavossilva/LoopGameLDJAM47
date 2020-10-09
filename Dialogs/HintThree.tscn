@@ -48,7 +48,7 @@ texture = ExtResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="DialogText" parent="DialogPanel" index="0"]
-text = "All the secrets of the world worth knowing are hiding in plain site."
+text = "Sometimes, safety is found hiding in plain sight. But a little strength can help creating a path."
 percent_visible = 0.0
 
 [node name="SpeakerName" parent="Speaker" index="0"]
